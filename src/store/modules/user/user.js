@@ -26,16 +26,16 @@ export default {
     }
   },
   mutations: {
+    clearUser (state) {
+      localStorage.removeItem('user')
+      state.user = {}
+    },
     toggleLoading (state, payload) {
       state.loading = payload
     },
     setUser (state, payload) {
       localStorage.setItem('user', JSON.stringify(payload))
       state.user = payload
-    },
-    clearUser (state) {
-      localStorage.removeItem('user')
-      state.user = {}
     }
   },
   actions: {
