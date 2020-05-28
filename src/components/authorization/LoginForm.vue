@@ -1,0 +1,153 @@
+<template>
+  <v-form
+    :disabled="true"
+    @submit="login"
+  >
+
+    <!--Логин-->
+    <v-text-field
+      clearable
+      name="login"
+      prepend-icon="mdi-account"
+      required
+      type="text"
+      v-model="username"
+      :disabled="loading"
+      :error-messages="usernameErrors"
+      :label="`${$t('auth.username')} *`"
+      @blur="$v.username.$touch()"
+      @input="$v.username.$touch()"
+    />
+
+    <!--Пароль-->
+    <v-text-field
+      clearable
+      name="password"
+      prepend-icon="mdi-lock"
+      required
+      type="password"
+      v-model="password"
+      :disabled="loading"
+      :label="`${$t('auth.password')} *`"
+      :error-messages="passwordErrors"
+      @blur="$v.password.$touch()"
+      @change="$v.password.$touch()"
+    />
+
+    <!--Выбор типа авторизации-->
+    <v-select
+      prepend-icon="mdi-chess-pawn"
+      v-model="typeLoginForm"
+      :items="loginForms"
+      :label="$t('typesLoginForm.typesLoginForm')"
+    ></v-select>
+
+    <!--Запомнить меня-->
+    <v-checkbox
+      color="primary"
+      v-model="rememberMe"
+      :label="$t('auth.rememberMe')"
+    />
+
+    <!--Кнопка войти-->
+    <v-btn
+      block
+      color="primary"
+      type="submit"
+      :disabled="$v.$invalid"
+      :loading="loading"
+      @click.prevent="login"
+    >
+      {{ $t('auth.login') }}
+    </v-btn>
+
+  </v-form>
+</template>
+
+<script>
+import { mapGetters } from 'vuex'
+import { validationMixin } from 'vuelidate'
+import { required } from 'vuelidate/lib/validators'
+
+export default {
+  name: 'LoginForm',
+  computed: {
+    ...mapGetters('authorization', [
+      'loading',
+      'isAuthorized'
+    ]),
+    ...mapGetters('contacts', [
+      'email'
+    ]),
+    ...mapGetters('typesLoginForm', [
+      'loginForms',
+      'typeLoginFormScorecard'
+    ]),
+    usernameErrors () {
+      const errors = []
+      if (!this.$v.username.$dirty) return errors
+      if (!this.$v.username.required) errors.push(this.$t('auth.usernameRequired'))
+      if (this.errors.username) errors.push(this.errors.username)
+      return errors
+    },
+    passwordErrors () {
+      const errors = []
+      if (!this.$v.password.$dirty) return errors
+      if (!this.$v.password.required) errors.push(this.$t('auth.passwordRequired'))
+      if (this.errors.password) errors.push(this.errors.password)
+      return errors
+    }
+  },
+  data: () => ({
+    errors: {},
+    password: '',
+    rememberMe: true,
+    typeLoginForm: null,
+    username: ''
+  }),
+  mixins: [validationMixin],
+  validations: {
+    username: { required },
+    password: { required }
+  },
+  methods: {
+    /**
+     * Авторизация пользователя.
+     */
+    login () {
+      this.$v.$touch()
+      if (this.$v.$invalid) return false
+
+      this.$store.dispatch('authorization/login', {
+        username: this.username,
+        password: this.password,
+        rememberMe: this.rememberMe,
+        type: this.typeLoginForm
+      })
+        .then(async () => {
+          // Редирект после авторизации
+          await this.$router.push({ path: this.$route.query.redirect || '/' })
+          return true
+        })
+        .then(() => {
+          // Обновляет страницу после авторизации
+          window.location.reload()
+        })
+        .catch(error => {
+          // Установка ошибок валидации
+          if (error.isValidationError) {
+            this.errors = error.validationErrors
+          }
+        })
+    }
+  },
+  mounted () {
+    // задает по умолчанию тип авторизации
+    this.typeLoginForm = this.typeLoginFormScorecard
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
