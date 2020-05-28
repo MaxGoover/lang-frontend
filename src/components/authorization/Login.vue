@@ -21,7 +21,7 @@
 
         <!--Форма авторизации-->
         <v-card-text class="text-xs-left pt-0">
-<!--          <login-form/>-->
+          <login-form/>
         </v-card-text>
         <v-divider light></v-divider>
 
@@ -36,12 +36,12 @@
 <script>
 import { mapGetters } from 'vuex'
 
-// const LoginForm = () => import('./LoginForm')
+const LoginForm = () => import('./LoginForm')
 
 export default {
   name: 'Login',
   components: {
-    // LoginForm
+    LoginForm
   },
   computed: {
     ...mapGetters('authorization', [

@@ -4,9 +4,9 @@ import Authorization from '@/helpers/Authorization'
 export default {
   namespaced: true,
   state: {
+    isAuthorized: Authorization.isAuthorized(),
     loading: false,
-    token: Authorization.getAccessToken(),
-    isAuthorized: Authorization.isAuthorized()
+    token: Authorization.getAccessToken()
   },
   getters: {
     loading (state) {
