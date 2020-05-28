@@ -25,7 +25,7 @@ const logout = async () => {
   await store.dispatch('authorization/logout')
 
   // Удаляет заголовок авторизации
-  delete axios.defaults.headers.common['Authorization']
+  delete axios.defaults.headers.common.Authorization
 
   // Перенаправление на страницу входа
   await router.push({ name: 'login' })
@@ -64,7 +64,7 @@ axios.interceptors.response.use(response => {
     try {
       // Обновление токена
       await store.dispatch('authorization/updateToken')
-      error.response.config.headers['Authorization'] = 'Bearer ' + Authorization.getAccessToken()
+      error.response.config.headers.Authorization = 'Bearer ' + Authorization.getAccessToken()
 
       return axios(error.response.config)
     } catch (e) {
