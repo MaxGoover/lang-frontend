@@ -30,15 +30,24 @@ export default {
       localStorage.removeItem('user')
       state.user = {}
     },
-    toggleLoading (state, payload) {
-      state.loading = payload
-    },
     setUser (state, payload) {
       localStorage.setItem('user', JSON.stringify(payload))
       state.user = payload
+    },
+    toggleLoading (state, payload) {
+      state.loading = payload
     }
   },
   actions: {
+    /**
+     * Удаление данных о пользователе.
+     *
+     * @param commit
+     */
+    clearUser ({ commit }) {
+      commit('clearUser')
+    },
+
     /**
      * Сохранение данных о пользователе.
      *
@@ -47,15 +56,6 @@ export default {
      */
     setUser ({ commit }, payload) {
       commit('setUser', payload)
-    },
-
-    /**
-     * Удаление данных о пользователе.
-     *
-     * @param commit
-     */
-    clearUser ({ commit }) {
-      commit('clearUser')
     }
   }
 }

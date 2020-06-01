@@ -1,7 +1,7 @@
 export default {
   namespaced: true,
   state: {
-    errors: {}, // Это ошибки, которые буду прилетать нам с фронта
+    errors: {},
     filters: {
       nameProject: ''
     },
@@ -31,7 +31,6 @@ export default {
      * @param payload
      */
     setFilters ({ commit }, payload) {
-      console.log(payload)
       commit('setFilters', payload)
     }
   }

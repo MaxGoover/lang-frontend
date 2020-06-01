@@ -9,19 +9,26 @@ export default {
     token: Authorization.getAccessToken()
   },
   getters: {
+    isAuthorized (state) {
+      return state.isAuthorized
+    },
     loading (state) {
       return state.loading
     },
     token (state) {
       return state.token
-    },
-    isAuthorized (state) {
-      return state.isAuthorized
     }
   },
   mutations: {
-    toggleLoading (state, payload) {
-      state.loading = payload
+    clearLocalStorage () {
+      localStorage.removeItem('user')
+      localStorage.removeItem('menu')
+    },
+    clearToken (state) {
+      Authorization.clearData()
+
+      state.token = Authorization.getAccessToken()
+      state.isAuthorized = Authorization.isAuthorized()
     },
     setToken (state, { token, expiresAt, refreshToken }) {
       Authorization.setData({
@@ -33,18 +40,72 @@ export default {
       state.token = Authorization.getAccessToken()
       state.isAuthorized = Authorization.isAuthorized()
     },
-    clearToken (state) {
-      Authorization.clearData()
-
-      state.token = Authorization.getAccessToken()
-      state.isAuthorized = Authorization.isAuthorized()
-    },
-    clearLocalStorage () {
-      localStorage.removeItem('user')
-      localStorage.removeItem('menu')
+    toggleLoading (state, payload) {
+      state.loading = payload
     }
   },
   actions: {
+    /**
+     * Создание пользователя администратором.
+     *
+     * @param commit
+     * @param email
+     * @param password
+     * @param retypePassword
+     * @param type
+     * @returns {Promise<*>}
+     */
+    async administrationSignUp ({ commit }, { email, password, retypePassword, type }) {
+      commit('toggleLoading', true)
+
+      try {
+        const { data } = await axios.post('closed/authorization/sign-up', {
+          SignUpForm: {
+            username: email,
+            email,
+            password,
+            retypePassword,
+            type
+          }
+        })
+
+        commit('toggleLoading', false)
+        return Promise.resolve(data)
+      } catch (e) {
+        commit('toggleLoading', false)
+        return Promise.reject(e)
+      }
+    },
+
+    /**
+     * Изменение пароля.
+     *
+     * @param commit
+     * @param oldPassword
+     * @param password
+     * @param retypePassword
+     * @returns {Promise<*>}
+     */
+    async changePassword ({ commit }, { oldPassword, password, retypePassword }) {
+      commit('toggleLoading', true)
+
+      try {
+        const { data } = await axios.post('closed/authorization/change-password', {
+          ChangePasswordForm: {
+            oldPassword,
+            password,
+            retypePassword
+          }
+        })
+
+        commit('toggleLoading', false)
+        return Promise.resolve(data)
+      } catch (e) {
+        commit('toggleLoading', false)
+        return Promise.reject(e)
+      }
+    },
+
     /**
      * Авторизация пользователя.
      *
@@ -65,33 +126,6 @@ export default {
         if (data.user) {
           this.dispatch('user/setUser', data.user)
         }
-
-        // Сохранение токена
-        if (typeof data.token === 'object') {
-          commit('setToken', data.token)
-        }
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
-    },
-
-    /**
-     * Обновление данных пользователя.
-     *
-     * @param commit
-     * @returns {Promise<*>}
-     */
-    async updateToken ({ commit }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('authorization/update-token', {
-          refreshToken: Authorization.getRefreshToken()
-        })
 
         // Сохранение токена
         if (typeof data.token === 'object') {
@@ -186,57 +220,23 @@ export default {
     },
 
     /**
-     * Изменение пароля.
+     * Обновление данных пользователя.
      *
      * @param commit
-     * @param oldPassword
-     * @param password
-     * @param retypePassword
      * @returns {Promise<*>}
      */
-    async changePassword ({ commit }, { oldPassword, password, retypePassword }) {
+    async updateToken ({ commit }) {
       commit('toggleLoading', true)
 
       try {
-        const { data } = await axios.post('closed/authorization/change-password', {
-          ChangePasswordForm: {
-            oldPassword,
-            password,
-            retypePassword
-          }
+        const { data } = await axios.post('authorization/update-token', {
+          refreshToken: Authorization.getRefreshToken()
         })
 
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
-    },
-
-    /**
-     * Создание пользователя администратором.
-     *
-     * @param commit
-     * @param email
-     * @param password
-     * @param retypePassword
-     * @param type
-     * @returns {Promise<*>}
-     */
-    async administrationSignUp ({ commit }, { email, password, retypePassword, type }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('closed/authorization/sign-up', {
-          SignUpForm: {
-            username: email,
-            email,
-            password,
-            retypePassword,
-            type
-          }
-        })
+        // Сохранение токена
+        if (typeof data.token === 'object') {
+          commit('setToken', data.token)
+        }
 
         commit('toggleLoading', false)
         return Promise.resolve(data)

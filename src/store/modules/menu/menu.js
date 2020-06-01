@@ -16,11 +16,11 @@ export default {
     }
   },
   mutations: {
-    toggleLoading (state, payload) {
-      state.loading = payload
-    },
     setMenu (state, payload) {
       state.menu = payload
+    },
+    toggleLoading (state, payload) {
+      state.loading = payload
     }
   },
   actions: {
