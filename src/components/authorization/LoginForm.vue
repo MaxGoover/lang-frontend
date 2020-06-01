@@ -6,12 +6,12 @@
 
     <!--Логин-->
     <v-text-field
+      v-model="username"
       clearable
       name="login"
       prepend-icon="mdi-account"
       required
       type="text"
-      v-model="username"
       :disabled="loading"
       :error-messages="usernameErrors"
       :label="`${$t('auth.username')} *`"
@@ -21,12 +21,12 @@
 
     <!--Пароль-->
     <v-text-field
+      v-model="password"
       clearable
       name="password"
       prepend-icon="mdi-lock"
       required
       type="password"
-      v-model="password"
       :disabled="loading"
       :label="`${$t('auth.password')} *`"
       :error-messages="passwordErrors"
@@ -36,16 +36,16 @@
 
     <!--Выбор типа авторизации-->
     <v-select
-      prepend-icon="mdi-chess-pawn"
       v-model="typeLoginForm"
+      prepend-icon="mdi-chess-pawn"
       :items="loginForms"
       :label="$t('typesLoginForm.typesLoginForm')"
     ></v-select>
 
     <!--Запомнить меня-->
     <v-checkbox
-      color="primary"
       v-model="rememberMe"
+      color="primary"
       :label="$t('auth.rememberMe')"
     />
 
@@ -66,15 +66,15 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { validationMixin } from 'vuelidate'
 import { required } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
 
 export default {
   name: 'LoginForm',
   computed: {
     ...mapGetters('authorization', [
-      'loading',
-      'isAuthorized'
+      'isAuthorized',
+      'loading'
     ]),
     ...mapGetters('contacts', [
       'email'
