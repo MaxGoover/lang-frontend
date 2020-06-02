@@ -34,14 +34,6 @@
       @change="$v.password.$touch()"
     />
 
-    <!--Выбор типа авторизации-->
-    <v-select
-      v-model="typeLoginForm"
-      prepend-icon="mdi-chess-pawn"
-      :items="loginForms"
-      :label="$t('typesLoginForm.typesLoginForm')"
-    ></v-select>
-
     <!--Запомнить меня-->
     <v-checkbox
       v-model="rememberMe"
@@ -79,10 +71,6 @@ export default {
     ...mapGetters('contacts', [
       'email'
     ]),
-    ...mapGetters('typesLoginForm', [
-      'loginForms',
-      'typeLoginFormScorecard'
-    ]),
     usernameErrors () {
       const errors = []
       if (!this.$v.username.$dirty) return errors
@@ -101,8 +89,7 @@ export default {
   data: () => ({
     errors: {},
     password: '',
-    rememberMe: true,
-    typeLoginForm: null,
+    rememberMe: false,
     username: ''
   }),
   mixins: [validationMixin],
@@ -140,10 +127,6 @@ export default {
           }
         })
     }
-  },
-  mounted () {
-    // задает по умолчанию тип авторизации
-    this.typeLoginForm = this.typeLoginFormScorecard
   }
 }
 </script>
