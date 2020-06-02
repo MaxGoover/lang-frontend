@@ -1,8 +1,8 @@
 <template>
   <v-toolbar
-    dense
-    dark
     color="primary"
+    dark
+    dense
   >
 
     <!--Боковое меню-->
@@ -28,8 +28,8 @@
         v-for="item in menu"
         :key="item.name"
         flat
-        :to="{ name: item.name }"
         :color="typeof item.meta.background !== 'undefined' ? item.meta.background : ''"
+        :to="{ name: item.name }"
       >
         {{ $t(`menu.${item.name}`) }}
       </v-btn>

@@ -3,7 +3,7 @@ export default {
     defaultImage: '/img/default-image.png',
     defaultUserImage: '/img/default-user.png',
     mainImage: '/img/main-image.jpg',
-    name: 'Scorecard'
+    name: 'M-leef'
   },
   auth: {
     authError: 'Неверный пароль или логин',
