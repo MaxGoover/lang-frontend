@@ -37,7 +37,7 @@
     <!--Запомнить меня-->
     <v-checkbox
       v-model="rememberMe"
-      color="primary"
+      color="grey darken-4"
       :label="$t('auth.rememberMe')"
     />
 

@@ -15,7 +15,7 @@ export default {
     noAccount: 'Еще нет аккаунта?',
     password: 'Пароль',
     passwordRequired: 'Необходимо ввести пароль',
-    rememberMe: 'Запомнить',
+    rememberMe: 'Запомни меня',
     signUp: 'Зарегистрируйтесь',
     username: 'Логин',
     usernameRequired: 'Необходимо ввести логин'
@@ -50,11 +50,6 @@ export default {
   targetEditor: {
     autoUpdate: 'Автообновление',
     inversion: 'Инверсивность'
-  },
-  typesLoginForm: {
-    aaa: 'AAA',
-    scorecard: 'Scorecard',
-    typesLoginForm: 'Тип авторизации'
   },
   user: {
     avatar: 'Аватар'
