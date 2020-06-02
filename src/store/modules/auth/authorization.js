@@ -1,5 +1,5 @@
-import { axios } from '@/axios'
-import Authorization from '@/helpers/Authorization'
+import { axios } from '../../../axios'
+import Authorization from '../../../helpers/Authorization'
 
 export default {
   namespaced: true,

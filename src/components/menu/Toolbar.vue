@@ -13,7 +13,7 @@
 
     <!--Логотип-->
     <v-toolbar-items>
-      <v-btn flat :to="{ name: 'main' }" active-class="">
+      <v-btn flat :to="{ name: 'Main' }" active-class="">
         <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
       </v-btn>
     </v-toolbar-items>

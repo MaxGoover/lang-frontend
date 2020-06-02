@@ -108,8 +108,7 @@ export default {
       this.$store.dispatch('authorization/login', {
         username: this.username,
         password: this.password,
-        rememberMe: this.rememberMe,
-        type: this.typeLoginForm
+        rememberMe: this.rememberMe
       })
         .then(async () => {
           // Редирект после авторизации
