@@ -50,14 +50,14 @@ export default {
     breadcrumbs () {
       return [
         {
-          text: this.$i18n.t('menu.login'),
-          disabled: false,
-          to: { name: 'login' }
-        },
-        {
           text: this.$i18n.t('menu.main'),
           disabled: false,
           to: { name: 'main' }
+        },
+        {
+          text: this.$i18n.t('menu.login'),
+          disabled: false,
+          to: { name: 'login' }
         }
       ]
     }

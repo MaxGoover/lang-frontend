@@ -55,7 +55,7 @@ export default {
      * @param type
      * @returns {Promise<*>}
      */
-    async administrationSignUp ({ commit }, { email, password, retypePassword, type }) {
+    async administrationSignUp ({ commit }, { email, password, retypePassword }) {
       commit('toggleLoading', true)
 
       try {
@@ -64,8 +64,7 @@ export default {
             username: email,
             email,
             password,
-            retypePassword,
-            type
+            retypePassword
           }
         })
 
@@ -116,11 +115,11 @@ export default {
      * @param rememberMe
      * @returns {Promise<*>}
      */
-    async login ({ commit }, { username, password, type, rememberMe }) {
+    async login ({ commit }, { username, password, rememberMe }) {
       commit('toggleLoading', true)
 
       try {
-        const { data } = await axios.post('authorization/login', { username, password, type, rememberMe })
+        const { data } = await axios.post('authorization/login', { username, password, rememberMe })
 
         // Сохранение данных о пользователе
         if (data.user) {
@@ -177,7 +176,7 @@ export default {
      * @param type
      * @returns {Promise<*>}
      */
-    async signUp ({ commit }, { email, password, retypePassword, type }) {
+    async signUp ({ commit }, { email, password, retypePassword }) {
       commit('toggleLoading', true)
 
       try {
@@ -186,8 +185,7 @@ export default {
             username: email,
             email,
             password,
-            retypePassword,
-            type
+            retypePassword
           }
         })
 
