@@ -6,8 +6,8 @@
     <v-list>
       <v-list-item
         v-for="item in items"
-        link
         :key="item.title"
+        link
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
