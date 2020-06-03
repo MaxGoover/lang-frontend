@@ -6,11 +6,19 @@ import store from '../store/index'
 
 /**
  * Создаем Axios с параметрами.
+<<<<<<< HEAD
+ * baseUrl - url нашего API, куда мы будем стучаться.
+=======
+>>>>>>> master
  *
  * @type {AxiosInstance}
  */
 const axios = Axios.create({
+<<<<<<< HEAD
+  baseURL: process.env.VUE_APP_API_PATH,
+=======
   baseURL: process.env.VUE_APP_API_PATH, // Backend сервер
+>>>>>>> master
   headers: {
     'Accept-Language': i18n.locale
   }
@@ -24,7 +32,11 @@ const logout = async () => {
   await store.dispatch('authorization/logout')
 
   // Удаляет заголовок авторизации
+<<<<<<< HEAD
+  delete axios.defaults.headers.common.Authorization
+=======
   delete axios.defaults.headers.common['Authorization']
+>>>>>>> master
 
   // Перенаправление на страницу входа
   await router.push({ name: 'login' })
@@ -34,7 +46,11 @@ const logout = async () => {
 }
 
 /**
+<<<<<<< HEAD
+ * Действия перед отправкой запроса к API.
+=======
  * Действия при получении ответа.
+>>>>>>> master
  */
 axios.interceptors.request.use(async config => {
   if (Authorization.isAuthorized()) {
@@ -47,7 +63,11 @@ axios.interceptors.request.use(async config => {
 })
 
 /**
+<<<<<<< HEAD
+ * Действия после получения ответа от API.
+=======
  * Действия при получении ответа.
+>>>>>>> master
  */
 // т.е. когда нам с бекэнда прилетел какой-то ответ
 axios.interceptors.response.use(response => {
@@ -63,7 +83,11 @@ axios.interceptors.response.use(response => {
     try {
       // Обновление токена
       await store.dispatch('authorization/updateToken')
+<<<<<<< HEAD
+      error.response.config.headers.Authorization = 'Bearer ' + Authorization.getAccessToken()
+=======
       error.response.config.headers['Authorization'] = 'Bearer ' + Authorization.getAccessToken()
+>>>>>>> master
 
       return axios(error.response.config)
     } catch (e) {

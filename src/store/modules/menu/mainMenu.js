@@ -13,11 +13,11 @@ export default {
     }
   },
   mutations: {
-    toggleLoading (state, payload) {
-      state.loading = payload
-    },
     addMenu (state, payload) {
       state.menu = state.menu.concat(payload)
+    },
+    toggleLoading (state, payload) {
+      state.loading = payload
     }
   },
   actions: {

@@ -1,0 +1,41 @@
+<template>
+  <v-navigation-drawer
+    dark
+    fixed
+  >
+    <v-list>
+      <v-list-item
+        v-for="item in items"
+        link
+        :key="item.title"
+      >
+        <v-list-item-icon>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </v-list>
+  </v-navigation-drawer>
+</template>
+
+<script>
+export default {
+  name: 'Drawer',
+  data () {
+    return {
+      items: [
+        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
+        { title: 'Account', icon: 'mdi-account-box' },
+        { title: 'Admin', icon: 'mdi-gavel' }
+      ]
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
