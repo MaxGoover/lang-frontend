@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Main',
-    redirect: { name: 'Login' }
+    component: () => import(/* webpackChunkName: "main" */ '../components/main/Main.vue')
   },
   {
     path: '/login',
