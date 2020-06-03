@@ -90,13 +90,13 @@ export default {
         },
         {
           icon: 'mdi-login',
-          route: '/login',
-          title: this.$i18n.t('appHeader.login')
+          route: '/signin',
+          title: this.$i18n.t('appHeader.signIn')
         },
         {
           icon: 'mdi-lock-open',
-          route: '/signin',
-          title: this.$i18n.t('appHeader.signIn')
+          route: '/signup',
+          title: this.$i18n.t('appHeader.signUp')
         }
       ]
     }

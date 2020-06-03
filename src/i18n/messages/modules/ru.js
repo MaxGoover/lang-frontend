@@ -5,7 +5,8 @@ export default {
     logout: 'Выйти',
     myCabinet: 'Мой кабинет',
     read: 'Читать',
-    signIn: 'Зарегистрироваться'
+    signIn: 'Войти в систему',
+    signUp: 'Зарегистрироваться'
   },
   app: {
     defaultImage: '/img/default-image.png',
