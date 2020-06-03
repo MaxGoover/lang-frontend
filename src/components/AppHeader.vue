@@ -32,7 +32,12 @@
           @click.stop="toggleDrawer = !toggleDrawer"
         ></v-app-bar-nav-icon>
 
-        <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
+        <v-btn
+          text
+          :to="{ name: 'main' }"
+        >
+          <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
+        </v-btn>
 
         <v-spacer/>
         <v-toolbar-items
