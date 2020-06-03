@@ -3,6 +3,7 @@
     <v-navigation-drawer
       v-model="toggleDrawer"
       absolute
+      class="hidden-md-and-up"
       temporary
     >
       <v-list>
@@ -27,13 +28,16 @@
         class="primary"
       >
         <v-app-bar-nav-icon
+          class="hidden-md-and-up"
           @click.stop="toggleDrawer = !toggleDrawer"
         ></v-app-bar-nav-icon>
 
         <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
 
         <v-spacer/>
-        <v-toolbar-items>
+        <v-toolbar-items
+          class="hidden-sm-and-down"
+        >
           <v-btn
             v-for="item in menuItems"
             :key="item.title"
