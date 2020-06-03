@@ -31,6 +31,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "signup" */ '../components/SignUp.vue')
   },
   {
+    path: '/profile',
+    name: 'Profile',
+    component: () => import(/* webpackChunkName: "profile" */ '../components/Profile.vue')
+  },
+  {
     path: '*',
     name: 'Page404',
     component: () => import(/* webpackChunkName: "page404" */ '../components/errors/Page404.vue')
