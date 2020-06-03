@@ -1,5 +1,9 @@
 <template>
   <v-app>
+
+    <!--Верхнее меню-->
+    <app-header/>
+
     <v-content>
       <router-view/>
     </v-content>
@@ -7,7 +11,12 @@
 </template>
 
 <script>
+const AppHeader = () => import('./components/AppHeader')
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    AppHeader
+  }
 }
 </script>
