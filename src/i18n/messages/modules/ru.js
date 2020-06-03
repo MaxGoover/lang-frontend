@@ -1,4 +1,12 @@
 export default {
+  appHeader: {
+    learnWords: 'Учить слова',
+    login: 'Войти',
+    logout: 'Выйти',
+    myCabinet: 'Мой кабинет',
+    read: 'Читать',
+    signIn: 'Зарегистрироваться'
+  },
   app: {
     defaultImage: '/img/default-image.png',
     defaultUserImage: '/img/default-user.png',
