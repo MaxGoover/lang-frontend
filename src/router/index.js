@@ -6,14 +6,29 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../components/authorization/Login.vue')
-  },
-  {
     path: '/',
     name: 'Main',
     component: () => import(/* webpackChunkName: "main" */ '../components/main/Main.vue')
+  },
+  {
+    path: '/books',
+    name: 'Books',
+    component: () => import(/* webpackChunkName: "books" */ '../components/Books.vue')
+  },
+  {
+    path: '/words',
+    name: 'Words',
+    component: () => import(/* webpackChunkName: "words" */ '../components/Words.vue')
+  },
+  {
+    path: '/signin',
+    name: 'SignIn',
+    component: () => import(/* webpackChunkName: "signin" */ '../components/SignIn.vue')
+  },
+  {
+    path: '/signup',
+    name: 'Main',
+    component: () => import(/* webpackChunkName: "signup" */ '../components/SignUp.vue')
   },
   {
     path: '*',
