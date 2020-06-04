@@ -9,15 +9,9 @@ export default {
     token: Authorization.getAccessToken()
   },
   getters: {
-    isAuthorized (state) {
-      return state.isAuthorized
-    },
-    loading (state) {
-      return state.loading
-    },
-    token (state) {
-      return state.token
-    }
+    isAuthorized: (state) => state.isAuthorized,
+    loading: (state) => state.loading,
+    token: (state) => state.token
   },
   mutations: {
     clearLocalStorage () {
