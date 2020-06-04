@@ -2,15 +2,6 @@
   <v-layout align-center justify-center>
     <v-flex sm12 md6 lg4 mb-5>
 
-      <!--Хлебные крошки-->
-      <v-breadcrumbs
-        v-if="$vuetify.breakpoint.smAndUp"
-        :items="breadCrumbs">
-        <template slot="divider">
-          <v-icon>mdi-forward</v-icon>
-        </template>
-      </v-breadcrumbs>
-
       <v-card
         :elevation="$vuetify.breakpoint.smAndDown ? 0 : 6"
         :flat="$vuetify.breakpoint.smAndDown"

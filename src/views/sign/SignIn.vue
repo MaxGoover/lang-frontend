@@ -1,7 +1,10 @@
 <template>
   <div>
+    <!--Хлебные крошки-->
+    <app-bread-crumbs :breadCrumbs="breadCrumbs"/>
+
+    <!--Авторизация-->
     <sign
-      :breadCrumbs="breadCrumbs"
       :buttonConfirmTitle="$t('pageSign.signIn')"
       :formTitle="$t('pageSign.authorization')"
     />
@@ -12,11 +15,13 @@
 import { i18n } from '../../i18n'
 import BreadCrumb from '../../entities/breadCrumb'
 
+const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
 const Sign = () => import('./components/Sign')
 
 export default {
   name: 'SignIn',
   components: {
+    AppBreadCrumbs,
     Sign
   },
   data: () => ({
