@@ -13,27 +13,27 @@ const routes = [
   {
     path: '/books',
     name: 'Books',
-    component: () => import(/* webpackChunkName: "books" */ '../components/Books.vue')
+    component: () => import(/* webpackChunkName: "books" */ '../views/Books.vue')
   },
   {
     path: '/words',
     name: 'Words',
-    component: () => import(/* webpackChunkName: "words" */ '../components/Words.vue')
+    component: () => import(/* webpackChunkName: "words" */ '../views/Words.vue')
   },
   {
     path: '/signin',
     name: 'SignIn',
-    component: () => import(/* webpackChunkName: "signin" */ '../components/SignIn.vue')
+    component: () => import(/* webpackChunkName: "signin" */ '../views/SignIn.vue')
   },
   {
     path: '/signup',
     name: 'SignUp',
-    component: () => import(/* webpackChunkName: "signup" */ '../components/SignUp.vue')
+    component: () => import(/* webpackChunkName: "signup" */ '../views/SignUp.vue')
   },
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../components/Profile.vue')
+    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
   },
   {
     path: '*',
