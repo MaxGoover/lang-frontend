@@ -1,19 +1,18 @@
 export default {
   namespaced: true,
   state: {
+    error: null,
     loading: false
   },
   getters: {
-    loading (state) {
-      return state.loading
-    }
+    loading: (state) => state.loading
   },
   mutations: {
     startLoading (state) {
       state.loading = true
     },
     stopLoading (state) {
-      state.loading = true
+      state.loading = false
     }
   },
   actions: {
