@@ -11,7 +11,7 @@
         <!--Ссылка на главную страница-->
         <v-btn
           flat color="primary"
-          :to="{ name: 'main' }"
+          :to="{ name: 'Main' }"
         >
           ⟵ {{ $t('menu.main') }}
         </v-btn>

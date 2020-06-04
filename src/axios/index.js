@@ -1,6 +1,6 @@
 import Authorization from '../helpers/Authorization'
 import Axios from 'axios'
-import i18n from '../i18n/index'
+import { i18n } from '../i18n/index'
 import router from '../router/index'
 import store from '../store/index'
 

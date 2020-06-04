@@ -4,8 +4,8 @@
 
       <!--Хлебные крошки-->
       <v-breadcrumbs
-        v-if="$vuetify.breakpoint.mdAndUp"
-        :items="breadcrumbs">
+        v-if="$vuetify.breakpoint.smAndUp"
+        :items="breadCrumbs">
         <template slot="divider">
           <v-icon>mdi-forward</v-icon>
         </template>
@@ -48,7 +48,7 @@ export default {
     SignForm
   },
   props: {
-    breadcrumbs: { type: Array },
+    breadCrumbs: { type: Array },
     buttonConfirmTitle: { type: String },
     formTitle: { type: String }
   },

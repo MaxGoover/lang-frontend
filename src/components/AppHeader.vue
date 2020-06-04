@@ -34,7 +34,7 @@
 
         <v-btn
           text
-          :to="{ name: 'main' }"
+          :to="{ name: 'Main' }"
         >
           <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
         </v-btn>

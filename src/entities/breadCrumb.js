@@ -1,11 +1,23 @@
 export default class BreadCrumb {
-  #_text
-  #_to
-  #_disabled
+  text
+  to
+  disabled
 
   constructor (text, to, disabled = false) {
-    this.#_text = text
-    this.#_to = to
-    this.#_disabled = disabled
+    this.text = text
+    this.to = to
+    this.disabled = disabled
+  }
+
+  get text () {
+    return this.text
+  }
+
+  get to () {
+    return this.to
+  }
+
+  get disabled () {
+    return this.disabled
   }
 }
