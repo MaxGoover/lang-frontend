@@ -10,9 +10,6 @@ export default {
     signUp: 'Зарегистрироваться'
   },
   app: {
-    defaultImage: '/img/default-image.png',
-    defaultUserImage: '/img/default-user.png',
-    mainImage: '/img/main-image.jpg',
     name: 'M-leef'
   },
   error: {
