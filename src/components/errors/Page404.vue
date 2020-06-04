@@ -23,7 +23,7 @@
           flat color="primary"
           @click="goBack"
         >
-          ⟵ {{ $t('content.goBack') }}
+          ⟵ {{ $t('menu.back') }}
         </v-btn>
 
       </v-card-text>

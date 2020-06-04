@@ -15,8 +15,13 @@ export default {
     mainImage: '/img/main-image.jpg',
     name: 'M-leef'
   },
+  error: {
+    pageNotFound: 'Страница не найдена',
+    tryFollowingPages: 'Попробуйте перейти на одну из следующих страниц:'
+  },
   menu: {
-    goBack: 'Вернуться на главную'
+    back: 'Назад',
+    main: 'Главная'
   },
   pageSign: {
     authorization: 'Авторизация',
