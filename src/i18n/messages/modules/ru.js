@@ -14,57 +14,11 @@ export default {
     mainImage: '/img/main-image.jpg',
     name: 'M-leef'
   },
-  auth: {
-    authError: 'Неверный пароль или логин',
-    cannotSignUp: 'На данный момент нет возможности зарегистироваться.',
-    createAccount: 'Создать аккаунт',
-    joinUs: 'Вступить в союз',
-    login: 'Войти',
-    logout: 'Выйти',
-    noAccount: 'Еще нет аккаунта?',
+  pageSignUp: {
+    eMail: 'Е-майл',
     password: 'Пароль',
-    passwordRequired: 'Необходимо ввести пароль',
-    rememberMe: 'Запомни меня',
-    signUp: 'Зарегистрируйтесь',
-    username: 'Логин',
-    usernameRequired: 'Необходимо ввести логин'
-  },
-  common: {
-    add: 'Добавить',
-    choosePeriod: 'Выберите период',
-    enterValue: 'Введите значение'
-  },
-  content: {
-    goBack: 'Назад',
-    saveChanges: 'Сохранить изменения',
-    search: 'Поиск'
-  },
-  error: {
-    pageNotFound: 'Страница не найдена',
-    tryFollowingPages: 'Пожалуйста, попробуйте перейти на одну из следующих страниц:'
-  },
-  filter: {
-    nameProject: 'Название проекта'
-  },
-  menu: {
-    dashboard: 'Приборная панель',
-    login: 'Авторизация',
-    main: 'Главная',
-    targetEditor: 'Редактор таргетов',
-    userActions: 'Меню пользователя'
-  },
-  target: {
-    targets: 'Таргеты'
-  },
-  targetEditor: {
-    autoUpdate: 'Автообновление',
-    inversion: 'Инверсивность'
-  },
-  user: {
-    avatar: 'Аватар'
-  },
-  validation: {
-    required: 'Обязательное значение'
+    registration: 'Регистрация',
+    signUp: 'Зарегистрироваться'
   }
 }
 // зеленая - создает
