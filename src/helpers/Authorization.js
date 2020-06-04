@@ -13,24 +13,6 @@ const REFRESH_TOKEN = 'refresh-token'
  */
 export default class Authorization {
   /**
-   * Авторизован ли пользователь.
-   *
-   * @returns {boolean}
-   */
-  static isAccessTokenExpired () {
-    return Authorization.getAccessTokenExpires() < Date.now() / 1000
-  }
-
-  /**
-   * Авторизован ли пользователь.
-   *
-   * @returns {boolean}
-   */
-  static isAuthorized () {
-    return !!Authorization.getAccessToken()
-  }
-
-  /**
    * Удаляет токен доступа.
    */
   static clearAccessToken () {
@@ -86,6 +68,24 @@ export default class Authorization {
    */
   static getRefreshToken () {
     return localStorage.getItem(REFRESH_TOKEN)
+  }
+
+  /**
+   * Авторизован ли пользователь.
+   *
+   * @returns {boolean}
+   */
+  static isAccessTokenExpired () {
+    return Authorization.getAccessTokenExpires() < Date.now() / 1000
+  }
+
+  /**
+   * Авторизован ли пользователь.
+   *
+   * @returns {boolean}
+   */
+  static isAuthorized () {
+    return !!Authorization.getAccessToken()
   }
 
   /**
