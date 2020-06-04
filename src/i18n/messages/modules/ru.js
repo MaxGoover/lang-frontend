@@ -3,9 +3,10 @@ export default {
     learnWords: 'Учить слова',
     login: 'Войти',
     logout: 'Выйти',
+    main: 'Главная',
     myCabinet: 'Мой кабинет',
     read: 'Читать',
-    signIn: 'Войти в систему',
+    signIn: 'Войти',
     signUp: 'Зарегистрироваться'
   },
   app: {
@@ -14,11 +15,19 @@ export default {
     mainImage: '/img/main-image.jpg',
     name: 'M-leef'
   },
-  pageSignUp: {
-    eMail: 'Е-майл',
+  menu: {
+    goBack: 'Вернуться на главную'
+  },
+  pageSign: {
+    authorization: 'Авторизация',
     password: 'Пароль',
+    passwordRequired: 'Необходимо ввести пароль',
     registration: 'Регистрация',
-    signUp: 'Зарегистрироваться'
+    rememberMe: 'Запомни меня',
+    signIn: 'Войти',
+    signUp: 'Зарегистрироваться',
+    username: 'Логин',
+    usernameRequired: 'Необходимо ввести логин'
   }
 }
 // зеленая - создает
