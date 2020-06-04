@@ -1,6 +1,6 @@
 <template>
   <v-form
-    @submit="login"
+    @submit="confirmForm"
   >
 
     <!--Логин-->
@@ -27,8 +27,8 @@
       required
       type="password"
       :disabled="loading"
-      :label="`${$t('pageSign.password')} *`"
       :error-messages="passwordErrors"
+      :label="`${$t('pageSign.password')} *`"
       @blur="$v.password.$touch()"
       @change="$v.password.$touch()"
     />
@@ -58,7 +58,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
-import { validationMixin } from 'vuelidate'
 
 export default {
   name: 'SignForm',
@@ -91,40 +90,47 @@ export default {
     rememberMe: false,
     username: null
   }),
-  mixins: [validationMixin],
   validations: {
     password: { required },
     username: { required }
   },
   methods: {
-    /**
-     * Авторизация пользователя.
-     */
-    login () {
-      this.$v.$touch()
-      if (this.$v.$invalid) return false
-
-      this.$store.dispatch('authorization/login', {
+    confirmForm () {
+      this.$emit('confirmForm', {
         password: this.password,
         rememberMe: this.rememberMe,
         username: this.username
       })
-        .then(async () => {
-          // Редирект после авторизации
-          await this.$router.push({ path: this.$route.query.redirect || '/' })
-          return true
-        })
-        .then(() => {
-          // Обновляет страницу после авторизации
-          window.location.reload()
-        })
-        .catch(error => {
-          // Установка ошибок валидации
-          if (error.isValidationError) {
-            this.errors = error.validationErrors
-          }
-        })
     }
+
+    /**
+     * Авторизация пользователя.
+     */
+    // login () {
+    //   this.$v.$touch()
+    //   if (this.$v.$invalid) return false
+    //
+    //   this.$store.dispatch('authorization/login', {
+    //     password: this.password,
+    //     rememberMe: this.rememberMe,
+    //     username: this.username
+    //   })
+    //     .then(async () => {
+    //       // Редирект после авторизации
+    //       await this.$router.push({ path: this.$route.query.redirect || '/' })
+    //       return true
+    //     })
+    //     .then(() => {
+    //       // Обновляет страницу после авторизации
+    //       window.location.reload()
+    //     })
+    //     .catch(error => {
+    //       // Установка ошибок валидации
+    //       if (error.isValidationError) {
+    //         this.errors = error.validationErrors
+    //       }
+    //     })
+    // }
   }
 }
 </script>

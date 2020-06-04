@@ -7,6 +7,7 @@
     <sign
       :buttonConfirmTitle="$t('pageSign.signUp')"
       :formTitle="$t('pageSign.registration')"
+      @confirmForm="signUp"
     />
   </div>
 </template>
@@ -29,7 +30,12 @@ export default {
       new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
       new BreadCrumb(i18n.t('pageSign.registration'), { name: 'SignUp' })
     ]
-  })
+  }),
+  methods: {
+    signUp () {
+
+    }
+  }
 }
 </script>
 

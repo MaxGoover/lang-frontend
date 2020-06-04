@@ -40,37 +40,6 @@ export default {
   },
   actions: {
     /**
-     * Создание пользователя администратором.
-     *
-     * @param commit
-     * @param email
-     * @param password
-     * @param retypePassword
-     * @param type
-     * @returns {Promise<*>}
-     */
-    async administrationSignUp ({ commit }, { email, password, retypePassword }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('closed/authorization/sign-up', {
-          SignUpForm: {
-            username: email,
-            email,
-            password,
-            retypePassword
-          }
-        })
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
-    },
-
-    /**
      * Изменение пароля.
      *
      * @param commit
@@ -79,15 +48,14 @@ export default {
      * @param retypePassword
      * @returns {Promise<*>}
      */
-    async changePassword ({ commit }, { oldPassword, password, retypePassword }) {
+    async changePassword ({ commit }, { oldPassword, password }) {
       commit('toggleLoading', true)
 
       try {
         const { data } = await axios.post('closed/authorization/change-password', {
           ChangePasswordForm: {
             oldPassword,
-            password,
-            retypePassword
+            password
           }
         })
 
@@ -109,11 +77,15 @@ export default {
      * @param rememberMe
      * @returns {Promise<*>}
      */
-    async login ({ commit }, { username, password, rememberMe }) {
+    async signIn ({ commit }, { password, rememberMe, username }) {
       commit('toggleLoading', true)
 
       try {
-        const { data } = await axios.post('authorization/login', { username, password, rememberMe })
+        const { data } = await axios.post('authorization/login', {
+          password,
+          rememberMe,
+          username
+        })
 
         // Сохранение данных о пользователе
         if (data.user) {
@@ -138,7 +110,7 @@ export default {
      *
      * @param commit
      */
-    async logout ({ commit }) {
+    async signOut ({ commit }) {
       commit('toggleLoading', true)
 
       try {
@@ -170,16 +142,15 @@ export default {
      * @param type
      * @returns {Promise<*>}
      */
-    async signUp ({ commit }, { email, password, retypePassword }) {
+    async signUp ({ commit }, { password, rememberMe, username }) {
       commit('toggleLoading', true)
 
       try {
         const { data } = await axios.post('authorization/sign-up', {
           SignUpForm: {
-            username: email,
-            email,
             password,
-            retypePassword
+            rememberMe,
+            username
           }
         })
 

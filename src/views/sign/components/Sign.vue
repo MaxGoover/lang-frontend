@@ -16,6 +16,7 @@
         <v-card-text class="text-xs-left pt-0">
           <sign-form
             :buttonConfirmTitle="buttonConfirmTitle"
+            @confirmForm="$emit('confirmForm')"
           />
         </v-card-text>
         <v-divider light></v-divider>
