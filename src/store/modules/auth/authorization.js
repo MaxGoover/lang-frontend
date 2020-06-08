@@ -67,12 +67,6 @@ export default {
       }
     },
 
-    /**
-     * Авторизация пользователя.
-     * @param commit
-     * @param payload
-     * @returns {Promise<unknown>}
-     */
     async signIn ({ commit }, payload) {
       commit('toggleLoading', true)
 
