@@ -98,11 +98,10 @@ export default {
   },
   methods: {
     confirmForm () {
-      console.log(1)
-      console.log(this.password)
       this.$emit('confirmForm', {
         password: this.password,
         rememberMe: this.rememberMe,
+        type: 2,
         username: this.username
       })
     }

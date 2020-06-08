@@ -33,10 +33,7 @@ export default {
   }),
   methods: {
     signIn (value) {
-      console.log(3)
-      console.log(value)
-      return false
-      // this.$store.dispatch('authorization/signIn', value)
+      this.$store.dispatch('authorization/signIn', value)
     }
   }
 }

@@ -32,8 +32,8 @@ export default {
     ]
   }),
   methods: {
-    signUp () {
-      this.$store.dispatch('authorization/signUp')
+    signUp (value) {
+      this.$store.dispatch('authorization/signUp', value)
     }
   }
 }

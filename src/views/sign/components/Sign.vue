@@ -16,7 +16,7 @@
         <v-card-text class="text-xs-left pt-0">
           <sign-form
             :buttonConfirmTitle="buttonConfirmTitle"
-            @confirmForm="$emit('confirmForm')"
+            @confirmForm="confirmForm"
           />
         </v-card-text>
         <v-divider light></v-divider>
@@ -48,6 +48,11 @@ export default {
     ...mapGetters('authorization', [
       'loading'
     ])
+  },
+  methods: {
+    confirmForm (value) {
+      this.$emit('confirmForm', value)
+    }
   }
 }
 </script>
