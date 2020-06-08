@@ -69,23 +69,15 @@ export default {
 
     /**
      * Авторизация пользователя.
-     *
      * @param commit
-     * @param username
-     * @param password
-     * @param type
-     * @param rememberMe
-     * @returns {Promise<*>}
+     * @param payload
+     * @returns {Promise<unknown>}
      */
-    async signIn ({ commit }, { password, rememberMe, username }) {
+    async signIn ({ commit }, payload) {
       commit('toggleLoading', true)
 
       try {
-        const { data } = await axios.post('authorization/login', {
-          password,
-          rememberMe,
-          username
-        })
+        const { data } = await axios.post('authorization/login', payload)
 
         // Сохранение данных о пользователе
         if (data.user) {
@@ -133,25 +125,17 @@ export default {
     },
 
     /**
-     * Авторизация пользователя.
-     *
+     * Регистрация пользователя.
      * @param commit
-     * @param email
-     * @param password
-     * @param retypePassword
-     * @param type
-     * @returns {Promise<*>}
+     * @param payload
+     * @returns {Promise<unknown>}
      */
-    async signUp ({ commit }, { password, rememberMe, username }) {
+    async signUp ({ commit }, payload) {
       commit('toggleLoading', true)
 
       try {
         const { data } = await axios.post('authorization/sign-up', {
-          SignUpForm: {
-            password,
-            rememberMe,
-            username
-          }
+          SignUpForm: payload
         })
 
         // Сохранение данных о пользователе

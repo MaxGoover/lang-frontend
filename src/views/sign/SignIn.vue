@@ -32,8 +32,11 @@ export default {
     ]
   }),
   methods: {
-    signIn () {
-      this.$store.dispatch('authorization/signIn')
+    signIn (value) {
+      console.log(3)
+      console.log(value)
+      return false
+      // this.$store.dispatch('authorization/signIn', value)
     }
   }
 }

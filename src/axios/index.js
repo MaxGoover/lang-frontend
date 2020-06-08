@@ -73,9 +73,6 @@ axios.interceptors.response.use(response => {
     }
   }
 
-  // Всплывающее уведомление с ошибкой
-  store.dispatch('snackBar/toggleSnackBar', { value: true, content: error.message, color: 'error' })
-
   return Promise.reject(error)
 })
 

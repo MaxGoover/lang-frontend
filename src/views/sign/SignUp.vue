@@ -33,7 +33,7 @@ export default {
   }),
   methods: {
     signUp () {
-
+      this.$store.dispatch('authorization/signUp')
     }
   }
 }

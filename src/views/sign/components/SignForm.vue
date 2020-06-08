@@ -7,7 +7,7 @@
     <v-text-field
       v-model="username"
       clearable
-      name="login"
+      name="username"
       prepend-icon="mdi-account"
       required
       type="text"
@@ -47,7 +47,7 @@
       type="submit"
       :disabled="$v.$invalid"
       :loading="loading"
-      @click.prevent="login"
+      @click.prevent="confirmForm"
     >
       {{ buttonConfirmTitle }}
     </v-btn>
@@ -58,6 +58,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { required } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
 
 export default {
   name: 'SignForm',
@@ -86,16 +87,19 @@ export default {
   },
   data: () => ({
     errors: {},
-    password: null,
+    password: '',
     rememberMe: false,
-    username: null
+    username: ''
   }),
+  mixins: [validationMixin],
   validations: {
     password: { required },
     username: { required }
   },
   methods: {
     confirmForm () {
+      console.log(1)
+      console.log(this.password)
       this.$emit('confirmForm', {
         password: this.password,
         rememberMe: this.rememberMe,
