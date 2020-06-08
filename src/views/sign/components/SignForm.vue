@@ -101,7 +101,6 @@ export default {
       this.$emit('confirmForm', {
         password: this.password,
         rememberMe: this.rememberMe,
-        type: 2,
         username: this.username
       })
     }
