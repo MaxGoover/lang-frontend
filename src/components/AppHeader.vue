@@ -95,7 +95,7 @@ export default {
         },
         {
           icon: 'mdi-login',
-          route: '/signin',
+          route: '/login',
           title: this.$i18n.t('appHeader.signIn')
         },
         {

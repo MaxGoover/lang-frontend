@@ -7,7 +7,7 @@
     <sign
       :buttonConfirmTitle="$t('pageSign.signIn')"
       :formTitle="$t('pageSign.authorization')"
-      @confirmForm="signIn"
+      @confirmForm="login"
     />
   </div>
 </template>
@@ -20,7 +20,7 @@ const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
 const Sign = () => import('./components/Sign')
 
 export default {
-  name: 'SignIn',
+  name: 'Login',
   components: {
     AppBreadCrumbs,
     Sign
@@ -28,12 +28,12 @@ export default {
   data: () => ({
     breadCrumbs: [
       new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-      new BreadCrumb(i18n.t('pageSign.authorization'), { name: 'SignIn' })
+      new BreadCrumb(i18n.t('pageSign.authorization'), { name: 'Login' })
     ]
   }),
   methods: {
-    signIn (value) {
-      this.$store.dispatch('authorization/signIn', value)
+    login (value) {
+      this.$store.dispatch('authorization/login', value)
     }
   }
 }

@@ -57,7 +57,7 @@ export default {
         },
         {
           icon: 'mdi-lock-open',
-          route: '/signin',
+          route: '/login',
           title: this.$i18n.t('appHeader.signIn')
         }
       ]

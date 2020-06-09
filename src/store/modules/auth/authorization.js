@@ -67,11 +67,11 @@ export default {
       }
     },
 
-    async signIn ({ commit }, payload) {
+    async login ({ commit }, payload) {
       commit('toggleLoading', true)
 
       try {
-        const { data } = await axios.post('authorization/login', payload)
+        const { data } = await axios.post('auth/auth/login', payload)
 
         // Сохранение данных о пользователе
         if (data.user) {
