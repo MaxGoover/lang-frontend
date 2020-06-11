@@ -68,7 +68,7 @@ export default {
     },
 
     async login ({ commit }, payload) {
-      commit('toggleLoading', true)
+      this.dispatch('general/startLoading')
       axios.post('auth/auth/login', {
         LoginForm: payload
       })
@@ -82,14 +82,12 @@ export default {
             if (typeof data.token === 'object') {
               commit('setToken', data.token)
             }
-            commit('toggleLoading', false)
           },
           reject => {
             console.log(2, reject.response)
           })
-        .catch(error => {
-          console.log(3, error)
-        })
+        .catch(error => { console.log(3, error )})
+        .finally(() => { this.dispatch('general/stopLoading') })
     },
 
     /**
@@ -126,7 +124,7 @@ export default {
      * @returns {Promise<unknown>}
      */
     async signUp ({ commit }, payload) {
-      commit('toggleLoading', true)
+      this.dispatch('general/startLoading')
 
       axios.post('auth/signup/signup', {
         SignupForm: payload
@@ -146,9 +144,8 @@ export default {
           reject => {
             console.log(2, reject.response)
           })
-        .catch(error => {
-          console.log(3, error)
-        })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
         // commit('toggleLoading', false)
         //
         // // Удаление данных о пользователе
