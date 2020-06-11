@@ -75,17 +75,17 @@ export default {
       return [
         {
           icon: 'mdi-eye',
-          route: '/books',
+          route: { name: 'Books' },
           title: this.$i18n.t('appHeader.read')
         },
         {
           icon: 'mdi-puzzle',
-          route: '/words',
+          route: { name: 'Words' },
           title: this.$i18n.t('appHeader.learnWords')
         },
         {
           icon: 'mdi-account-circle',
-          route: '/profile',
+          route: { name: 'Profile' },
           title: this.$i18n.t('appHeader.myCabinet')
         },
         {
@@ -95,12 +95,12 @@ export default {
         },
         {
           icon: 'mdi-login',
-          route: '/login',
-          title: this.$i18n.t('appHeader.signIn')
+          route: { name: 'Login' },
+          title: this.$i18n.t('appHeader.login')
         },
         {
           icon: 'mdi-lock-open',
-          route: '/signup',
+          route: { name: 'SignUp' },
           title: this.$i18n.t('appHeader.signUp')
         }
       ]

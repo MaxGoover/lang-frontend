@@ -6,7 +6,6 @@ export default {
     main: 'Главная',
     myCabinet: 'Мой кабинет',
     read: 'Читать',
-    signIn: 'Войти',
     signUp: 'Зарегистрироваться'
   },
   app: {

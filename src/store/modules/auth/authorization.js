@@ -69,26 +69,27 @@ export default {
 
     async login ({ commit }, payload) {
       commit('toggleLoading', true)
+      axios.post('auth/auth/login', {
+        LoginForm: payload
+      })
+        .then(
+          response => {
+            const data = response.data
+            if (data.user) {
+              this.dispatch('user/setUser', data.user)
+            }
 
-      try {
-        const { data } = await axios.post('auth/auth/login', payload)
-
-        // Сохранение данных о пользователе
-        if (data.user) {
-          this.dispatch('user/setUser', data.user)
-        }
-
-        // Сохранение токена
-        if (typeof data.token === 'object') {
-          commit('setToken', data.token)
-        }
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
+            if (typeof data.token === 'object') {
+              commit('setToken', data.token)
+            }
+            commit('toggleLoading', false)
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => {
+          console.log(3, error)
+        })
     },
 
     /**
@@ -127,37 +128,37 @@ export default {
     async signUp ({ commit }, payload) {
       commit('toggleLoading', true)
 
-      try {
-        const { data } = await axios.post('authorization/sign-up', {
-          SignUpForm: payload
+      axios.post('auth/signup/signup', {
+        SignupForm: payload
+      })
+        .then(
+          response => {
+            const data = response.data
+            if (data.user) {
+              this.dispatch('user/setUser', data.user)
+            }
+
+            if (typeof data.token === 'object') {
+              commit('setToken', data.token)
+            }
+            commit('toggleLoading', false)
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => {
+          console.log(3, error)
         })
-
-        // Сохранение данных о пользователе
-        if (data.user) {
-          this.dispatch('user/setUser', data.user)
-        }
-
-        // Сохранение токена
-        if (data.token) {
-          commit('setToken', data.token)
-        }
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-
-        // Удаление данных о пользователе
-        this.dispatch('user/clearUser')
-
-        // Удаление токена
-        commit('clearToken')
-
-        // Очистка localStorage
-        commit('clearLocalStorage')
-
-        return Promise.reject(e)
-      }
+        // commit('toggleLoading', false)
+        //
+        // // Удаление данных о пользователе
+        // this.dispatch('user/clearUser')
+        //
+        // // Удаление токена
+        // commit('clearToken')
+        //
+        // // Очистка localStorage
+        // commit('clearLocalStorage')
     },
 
     /**

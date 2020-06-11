@@ -53,10 +53,12 @@ router.beforeEach((to, from, next) => { // эта функция beforeEach вы
   const isAuthorized = store.getters['authorization/isAuthorized']
   // Если пользователь авторизован
   // и путь на страницу авторизации или регистрации, то ошибка 404
-  if (isAuthorized && (to.name === 'login' || to.name === 'SignUp')) {
-    next({ name: 'page404' })
+  console.log(isAuthorized)
+  console.log(to.name)
+  if (isAuthorized && (to.name === 'Login' || to.name === 'SignUp')) {
+    next({ name: 'Page404' })
   } else if (!isAuthorized && to.matched.some(record => record.meta.requiresAuth)) { // проверям наличие меты
-    next({ name: 'login' })
+    next({ name: 'Login' })
   } else {
     next()
   }
