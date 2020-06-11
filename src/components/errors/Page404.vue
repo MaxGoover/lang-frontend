@@ -10,7 +10,8 @@
 
         <!--Ссылка на главную страница-->
         <v-btn
-          flat color="primary"
+          color="primary"
+          text
           :to="{ name: 'Main' }"
         >
           ⟵ {{ $t('menu.main') }}
@@ -20,7 +21,8 @@
 
         <!--Вернуться назад-->
         <v-btn
-          flat color="primary"
+          color="primary"
+          text
           @click="goBack"
         >
           ⟵ {{ $t('menu.back') }}
