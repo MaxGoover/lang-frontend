@@ -14,6 +14,7 @@
 
 <script>
 import { i18n } from '../../i18n'
+import { mapState } from 'vuex'
 import BreadCrumb from '../../entities/breadCrumb'
 
 const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
@@ -31,6 +32,16 @@ export default {
       new BreadCrumb(i18n.t('pageSign.registration'), { name: 'SignUp' })
     ]
   }),
+  computed: {
+    ...mapState('authorization', ['isAuthorized'])
+  },
+  watch: {
+    isAuthorized (value) {
+      if (value) {
+        return this.$router.push('/')
+      }
+    }
+  },
   methods: {
     signUp (value) {
       this.$store.dispatch('authorization/signUp', value)
