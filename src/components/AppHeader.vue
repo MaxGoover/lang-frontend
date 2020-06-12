@@ -100,8 +100,8 @@ export default {
         },
         {
           icon: 'mdi-lock-open',
-          route: { name: 'SignUp' },
-          title: this.$i18n.t('appHeader.signUp')
+          route: { name: 'Signup' },
+          title: this.$i18n.t('appHeader.signup')
         }
       ]
     }

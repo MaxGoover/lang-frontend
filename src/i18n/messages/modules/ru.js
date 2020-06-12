@@ -6,12 +6,14 @@ export default {
     main: 'Главная',
     myCabinet: 'Мой кабинет',
     read: 'Читать',
-    signUp: 'Зарегистрироваться'
+    signup: 'Зарегистрироваться'
   },
   app: {
     name: 'M-leef'
   },
   error: {
+    minLengthError: 'Не менее {min} символов',
+    maxLengthError: 'Не более {max} символов',
     pageNotFound: 'Страница не найдена',
     tryFollowingPages: 'Попробуйте перейти на одну из следующих страниц:'
   },
@@ -27,8 +29,7 @@ export default {
     rememberMe: 'Запомни меня',
     signIn: 'Войти',
     signUp: 'Зарегистрироваться',
-    username: 'Логин',
-    usernameRequired: 'Необходимо ввести логин'
+    username: 'Логин'
   }
 }
 // зеленая - создает

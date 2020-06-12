@@ -15,7 +15,6 @@
       :error-messages="usernameErrors"
       :label="`${$t('pageSign.username')} *`"
       @blur="$v.username.$touch()"
-      @input="$v.username.$touch()"
     />
 
     <!--Пароль-->
@@ -30,7 +29,6 @@
       :error-messages="passwordErrors"
       :label="`${$t('pageSign.password')} *`"
       @blur="$v.password.$touch()"
-      @change="$v.password.$touch()"
     />
 
     <!--Запомни меня-->
@@ -45,7 +43,7 @@
       block
       color="primary"
       type="submit"
-      :disabled="$v.$invalid"
+      :disabled="$v.$invalid || loading"
       :loading="loading"
       @click.prevent="confirmForm"
     >
@@ -56,29 +54,28 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import { required } from 'vuelidate/lib/validators'
+import { mapState } from 'vuex'
+import { maxLength, minLength, required } from 'vuelidate/lib/validators'
 import { validationMixin } from 'vuelidate'
+import Params from '../../../params'
 
 export default {
   name: 'SignForm',
   computed: {
-    ...mapGetters('authorization', [
-      'isAuthorized',
-      'loading'
-    ]),
+    ...mapState('authorization', ['isAuthorized']),
+    ...mapState('general', ['loading']),
     usernameErrors () {
       const errors = []
       if (!this.$v.username.$dirty) return errors
-      if (!this.$v.username.required) errors.push(this.$t('pageSign.usernameRequired'))
-      if (this.errors.username) errors.push(this.errors.username)
+      if (!this.$v.username.minLength) errors.push(this.$t('error.minLengthError', { min: Params.usernameMinLength }))
+      if (!this.$v.username.maxLength) errors.push(this.$t('error.maxLengthError', { max: Params.usernameMaxLength }))
       return errors
     },
     passwordErrors () {
       const errors = []
       if (!this.$v.password.$dirty) return errors
-      if (!this.$v.password.required) errors.push(this.$t('pageSign.passwordRequired'))
-      if (this.errors.password) errors.push(this.errors.password)
+      if (!this.$v.password.minLength) errors.push(this.$t('error.minLengthError', { min: Params.passwordMinLength }))
+      if (!this.$v.password.maxLength) errors.push(this.$t('error.maxLengthError', { max: Params.passwordMaxLength }))
       return errors
     }
   },
@@ -93,8 +90,16 @@ export default {
   }),
   mixins: [validationMixin],
   validations: {
-    password: { required },
-    username: { required }
+    password: {
+      minLength: minLength(6),
+      maxLength: maxLength(24),
+      required
+    },
+    username: {
+      minLength: minLength(Params.usernameMinLength),
+      maxLength: maxLength(Params.usernameMaxLength),
+      required
+    }
   },
   methods: {
     confirmForm () {
