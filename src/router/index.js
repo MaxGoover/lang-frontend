@@ -28,7 +28,8 @@ const routes = [
   {
     path: '/profile',
     name: 'Profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
+    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
+    beforeEnter: authGuard
   },
   {
     path: '*',
@@ -37,24 +38,27 @@ const routes = [
   }
 ]
 
+const isAuthorized = store.getters['authorization/isAuthorized']
 const router = new VueRouter({
   base: process.env.BASE_URL,
   mode: 'history',
   routes
 })
 
-router.beforeEach((to, from, next) => { // эта функция beforeEach вызывается всякий раз, когда мы переходим по какому-либо роуту
-  // Авторизован ли пользователь
-  const isAuthorized = store.getters['authorization/isAuthorized']
+router.beforeEach((to, from, next) => {
   // Если пользователь авторизован
   // и путь на страницу авторизации или регистрации, то ошибка 404
   if (isAuthorized && (to.name === 'Login' || to.name === 'Signup')) {
     next({ name: 'Page404' })
-  } else if (!isAuthorized && to.matched.some(record => record.meta.requiresAuth)) { // проверям наличие меты
+  } else if (!isAuthorized && to.matched.some(record => record.meta.requiresAuth)) {
     next({ name: 'Login' })
   } else {
     next()
   }
 })
+
+function authGuard (to, from, next) {
+  isAuthorized ? next() : next({ name: 'Login' })
+}
 
 export default router
