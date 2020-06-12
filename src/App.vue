@@ -16,11 +16,12 @@
 <script>
 const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/AppHeader')
 const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/AppFooter')
+
 export default {
   name: 'App',
   components: {
-    AppFooter,
-    AppHeader
+    AppHeader,
+    AppFooter
   }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--Левое меню-->
     <v-navigation-drawer
       v-model="toggleDrawer"
       absolute
@@ -23,6 +24,7 @@
       </v-list>
     </v-navigation-drawer>
 
+    <!--Верхнее меню-->
     <v-card>
       <v-toolbar
         class="primary"
@@ -61,6 +63,19 @@
 
       </v-toolbar>
     </v-card>
+
+    <!--Диалоговое окно-->
+    <v-dialog v-model="dialog" persistent max-width="500">
+      <v-card>
+        <v-card-title class="headline justify-center">{{ $t('dimmer.askConfirmLogout') }}</v-card-title>
+        <v-card-text></v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" text @click="logout">{{ $t('common.yes') }}</v-btn>
+          <v-btn color="green darken-1" text @click="hideDimmer">{{ $t('common.no') }}</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </div>
 </template>
 
@@ -71,6 +86,7 @@ export default {
   name: 'AppHeader',
   data () {
     return {
+      dialog: false,
       toggleDrawer: false
     }
   },
@@ -93,7 +109,7 @@ export default {
         {
           icon: 'mdi-logout',
           title: this.$i18n.t('appHeader.logout'),
-          event: this.logout
+          event: this.showDimmer
         }
       ] : [
         {
@@ -113,6 +129,9 @@ export default {
   },
   methods: {
     blank () {},
+    hideDimmer () {
+      this.dialog = false
+    },
     logout () {
       this.$store.dispatch('authorization/logout')
         .then(async () => {
@@ -121,9 +140,15 @@ export default {
           return true
         })
         .then(() => {
+          // Закрываем диалоговое окно
+          this.hideDimmer()
+
           // Обновляет страницу после выхода
           window.location.reload()
         })
+    },
+    showDimmer () {
+      this.dialog = true
     }
   }
 }

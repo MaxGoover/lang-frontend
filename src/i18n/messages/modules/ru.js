@@ -11,6 +11,13 @@ export default {
   app: {
     name: 'M-leef'
   },
+  common: {
+    no: 'Нет',
+    yes: 'Да'
+  },
+  dimmer: {
+    askConfirmLogout: 'Вы действительно хотите выйти?'
+  },
   error: {
     minLengthError: 'Не менее {min} символов',
     maxLengthError: 'Не более {max} символов',
