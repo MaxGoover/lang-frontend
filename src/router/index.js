@@ -22,8 +22,8 @@ const routes = [
   },
   {
     path: '/signup',
-    name: 'SignUp',
-    component: () => import(/* webpackChunkName: "signup" */ '../views/sign/SignUp.vue')
+    name: 'Signup',
+    component: () => import(/* webpackChunkName: "signup" */ '../views/sign/Signup.vue')
   },
   {
     path: '/profile',
@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => { // эта функция beforeEach вы
   // и путь на страницу авторизации или регистрации, то ошибка 404
   console.log(isAuthorized)
   console.log(to.name)
-  if (isAuthorized && (to.name === 'Login' || to.name === 'SignUp')) {
+  if (isAuthorized && (to.name === 'Login' || to.name === 'Signup')) {
     next({ name: 'Page404' })
   } else if (!isAuthorized && to.matched.some(record => record.meta.requiresAuth)) { // проверям наличие меты
     next({ name: 'Login' })

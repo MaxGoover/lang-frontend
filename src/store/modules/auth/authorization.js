@@ -123,7 +123,7 @@ export default {
      * @param payload
      * @returns {Promise<unknown>}
      */
-    async signUp ({ commit }, payload) {
+    async signup ({ commit }, payload) {
       this.dispatch('general/startLoading')
 
       axios.post('auth/signup/signup', {

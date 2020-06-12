@@ -20,7 +20,7 @@ const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
 const Sign = () => import('./components/Sign')
 
 export default {
-  name: 'SignUp',
+  name: 'Signup',
   components: {
     AppBreadCrumbs,
     Sign
@@ -28,12 +28,12 @@ export default {
   data: () => ({
     breadCrumbs: [
       new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-      new BreadCrumb(i18n.t('pageSign.registration'), { name: 'SignUp' })
+      new BreadCrumb(i18n.t('pageSign.registration'), { name: 'Signup' })
     ]
   }),
   methods: {
     signUp (value) {
-      this.$store.dispatch('authorization/signUp', value)
+      this.$store.dispatch('authorization/signup', value)
     }
   }
 }
