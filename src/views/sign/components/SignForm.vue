@@ -79,9 +79,7 @@ export default {
       return errors
     }
   },
-  props: {
-    buttonConfirmTitle: { type: String }
-  },
+  props: { buttonConfirmTitle: { type: String } },
   data: () => ({
     errors: {},
     password: '',

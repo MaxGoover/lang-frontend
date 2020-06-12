@@ -31,7 +31,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue')
   },
   {
-    path: '/*',
+    path: '*',
     name: 'Page404',
     component: () => import(/* webpackChunkName: "page404" */ '../components/errors/Page404.vue')
   }
@@ -48,8 +48,6 @@ router.beforeEach((to, from, next) => { // эта функция beforeEach вы
   const isAuthorized = store.getters['authorization/isAuthorized']
   // Если пользователь авторизован
   // и путь на страницу авторизации или регистрации, то ошибка 404
-  console.log(isAuthorized)
-  console.log(to.name)
   if (isAuthorized && (to.name === 'Login' || to.name === 'Signup')) {
     next({ name: 'Page404' })
   } else if (!isAuthorized && to.matched.some(record => record.meta.requiresAuth)) { // проверям наличие меты

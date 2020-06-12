@@ -95,26 +95,26 @@ export default {
      *
      * @param commit
      */
-    async signOut ({ commit }) {
-      commit('toggleLoading', true)
+    async logout ({ commit }) {
+      this.dispatch('general/startLoading')
 
-      try {
-        await axios.post('closed/authorization/logout')
-      } catch (e) {
-      }
+      axios.post('auth/auth/logout')
+        .then(
+          response => {
+            // Удаление данных о пользователе
+            this.dispatch('user/clearUser')
 
-      commit('toggleLoading', false)
+            // Удаление токена
+            commit('clearToken')
 
-      // Удаление данных о пользователе
-      this.dispatch('user/clearUser')
-
-      // Удаление токена
-      commit('clearToken')
-
-      // Очистка localStorage
-      commit('clearLocalStorage')
-
-      return true
+            // Очистка localStorage
+            commit('clearLocalStorage')
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
     },
 
     /**

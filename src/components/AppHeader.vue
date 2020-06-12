@@ -49,6 +49,7 @@
             :key="item.title"
             text
             :to="item.route"
+            @click="item.event"
           >
             <v-icon
               left
@@ -80,30 +81,49 @@ export default {
         {
           icon: 'mdi-eye',
           route: { name: 'Books' },
-          title: this.$i18n.t('appHeader.read')
+          title: this.$i18n.t('appHeader.read'),
+          event: this.blank
         },
         {
           icon: 'mdi-account-circle',
           route: { name: 'Profile' },
-          title: this.$i18n.t('appHeader.myCabinet')
+          title: this.$i18n.t('appHeader.myCabinet'),
+          event: this.blank
         },
         {
           icon: 'mdi-logout',
-          route: '/logout',
-          title: this.$i18n.t('appHeader.logout')
+          title: this.$i18n.t('appHeader.logout'),
+          event: this.logout
         }
       ] : [
         {
           icon: 'mdi-login',
           route: { name: 'Login' },
-          title: this.$i18n.t('appHeader.login')
+          title: this.$i18n.t('appHeader.login'),
+          event: this.blank
         },
         {
           icon: 'mdi-lock-open',
           route: { name: 'Signup' },
-          title: this.$i18n.t('appHeader.signup')
+          title: this.$i18n.t('appHeader.signup'),
+          event: this.blank
         }
       ]
+    }
+  },
+  methods: {
+    blank () {},
+    logout () {
+      this.$store.dispatch('authorization/logout')
+        .then(async () => {
+          // Переадресация на главную страницу
+          await this.$router.push({ name: 'Main' })
+          return true
+        })
+        .then(() => {
+          // Обновляет страницу после выхода
+          window.location.reload()
+        })
     }
   }
 }

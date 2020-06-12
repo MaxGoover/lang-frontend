@@ -51,7 +51,7 @@ export default {
   watch: {
     isAuthorized (value) {
       if (value) {
-        return this.$router.push('/')
+        return this.$router.push({ name: 'Main' })
       }
     }
   },
