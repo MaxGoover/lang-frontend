@@ -10,6 +10,7 @@
         <v-list-item
           v-for="item in menuItems"
           :key="item.title"
+          :to="item.route"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -18,17 +19,17 @@
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
-          ></v-list-item>
+          </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
     <v-card>
       <v-toolbar
-        dark
         class="primary"
+        dark
       >
         <v-app-bar-nav-icon
-          class="hidden-md-and-up"
+          class="hidden-sm-and-up"
           @click.stop="toggleDrawer = !toggleDrawer"
         ></v-app-bar-nav-icon>
 
@@ -41,7 +42,7 @@
 
         <v-spacer/>
         <v-toolbar-items
-          class="hidden-sm-and-down"
+          class="hidden-xs-only"
         >
           <v-btn
             v-for="item in menuItems"
@@ -63,6 +64,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'AppHeader',
   data () {
@@ -71,8 +74,9 @@ export default {
     }
   },
   computed: {
+    ...mapState('authorization', ['isAuthorized']),
     menuItems () {
-      return [
+      return this.isAuthorized ? [
         {
           icon: 'mdi-eye',
           route: { name: 'Books' },
@@ -87,7 +91,8 @@ export default {
           icon: 'mdi-logout',
           route: '/logout',
           title: this.$i18n.t('appHeader.logout')
-        },
+        }
+      ] : [
         {
           icon: 'mdi-login',
           route: { name: 'Login' },
