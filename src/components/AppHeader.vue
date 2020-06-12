@@ -79,11 +79,6 @@ export default {
           title: this.$i18n.t('appHeader.read')
         },
         {
-          icon: 'mdi-puzzle',
-          route: { name: 'Words' },
-          title: this.$i18n.t('appHeader.learnWords')
-        },
-        {
           icon: 'mdi-account-circle',
           route: { name: 'Profile' },
           title: this.$i18n.t('appHeader.myCabinet')
