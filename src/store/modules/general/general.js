@@ -4,10 +4,6 @@ export default {
     error: null,
     loading: false
   },
-  getters: {
-    error: (state) => state.error,
-    loading: (state) => state.loading
-  },
   mutations: {
     cleanError (state) {
       state.error = null

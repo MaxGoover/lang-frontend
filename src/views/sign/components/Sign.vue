@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 
 const SignForm = () => import('./SignForm')
 
@@ -45,9 +45,15 @@ export default {
     formTitle: { type: String }
   },
   computed: {
-    ...mapGetters('authorization', [
-      'loading'
-    ])
+    ...mapState('authorization', ['isAuthorized']),
+    ...mapState('general', ['loading'])
+  },
+  watch: {
+    isAuthorized (value) {
+      if (value) {
+        return this.$router.push('/')
+      }
+    }
   },
   methods: {
     confirmForm (value) {
