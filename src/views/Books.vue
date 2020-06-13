@@ -5,8 +5,13 @@
 </template>
 
 <script>
+const BooksList = () => import(/* webpackChunkName: "booksList" */ '../components/books/BooksList')
+
 export default {
-  name: 'Books'
+  name: 'Books',
+  components: {
+    BooksList
+  }
 }
 </script>
 
