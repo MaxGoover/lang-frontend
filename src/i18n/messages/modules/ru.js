@@ -24,6 +24,9 @@ export default {
     pageNotFound: 'Страница не найдена',
     tryFollowingPages: 'Попробуйте перейти на одну из следующих страниц:'
   },
+  img: {
+    img1: '/img/kitty.png'
+  },
   menu: {
     back: 'Назад',
     main: 'Главная'

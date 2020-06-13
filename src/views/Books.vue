@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>BOOKS</h1>
+    <books-list/>
   </div>
 </template>
 

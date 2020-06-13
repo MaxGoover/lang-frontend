@@ -4,7 +4,7 @@ export default {
     books: [
       {
         id: 'ter6834wA2e2wG',
-        title: `Harry Potter and the Philosopher's stone - 1`,
+        title: 'Harry Potter and the Philosopher\'s stone - 1',
         description: 'Первая глава первой книги о Гарри Поттере',
         imageId: 'Uven93e9cwIEic8e32',
         parts: 7,
@@ -15,7 +15,7 @@ export default {
       },
       {
         id: 'mde7354wA2e2wG',
-        title: `Harry Potter and the Philosopher's stone - 2`,
+        title: 'Harry Potter and the Philosopher\'s stone - 2',
         description: 'Вторая глава первой книги о Гарри Поттере',
         imageId: 'ks5Q13m9cwIEic8e32',
         parts: 7,
@@ -26,7 +26,7 @@ export default {
       },
       {
         id: 'aafw7efw34wA2e2wG',
-        title: `Harry Potter and the Philosopher's stone - 3`,
+        title: 'Harry Potter and the Philosopher\'s stone - 3',
         description: 'Третья глава первой книги о Гарри Поттере',
         imageId: 'mu75m7j3e9cwIEic8e32',
         parts: 7,
