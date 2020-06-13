@@ -31,6 +31,11 @@ export default {
     back: 'Назад',
     main: 'Главная'
   },
+  pageBooks: {
+    goTo: 'Перейти',
+    level: 'Уровень',
+    parts: 'частей'
+  },
   pageSign: {
     authorization: 'Авторизация',
     password: 'Пароль',
