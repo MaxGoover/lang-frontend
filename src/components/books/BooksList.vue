@@ -7,11 +7,13 @@
       >
         <v-container fluid>
           <v-layout row>
+
+            <!--Поиск по тексту-->
             <v-flex>
               <v-text-field
-                v-model="search"
+                v-model="searchByText"
                 :label="$t('pageBooks.search')"
-              ></v-text-field>
+              />
             </v-flex>
           </v-layout>
         </v-container>
@@ -19,7 +21,7 @@
 
       <!--Карточка книги-->
       <v-flex
-        v-for="book in books"
+        v-for="book in filteredBooks"
         :key="book.id"
         offset-sm1 offset-md2
         xs12 sm10 md8
@@ -89,11 +91,20 @@ export default {
   name: 'BooksList',
   data () {
     return {
-      search: null
+      searchByText: null
     }
   },
   computed: {
-    ...mapState('books', ['books'])
+    ...mapState('books', ['books']),
+    filteredBooks () {
+      let books = this.books
+      if (this.searchByText) {
+        books = books.filter(book =>
+          book.title.toLowerCase().indexOf(this.searchByText.toLowerCase()) >= 0 ||
+            book.description.toLowerCase().indexOf(this.searchByText.toLowerCase()) >= 0)
+      }
+      return books
+    }
   },
   methods: {
     getBookLevels (levels) {
