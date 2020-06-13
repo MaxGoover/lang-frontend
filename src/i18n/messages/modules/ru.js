@@ -34,7 +34,8 @@ export default {
   pageBooks: {
     goTo: 'Перейти',
     level: 'Уровень',
-    parts: 'частей'
+    parts: 'частей',
+    search: 'Поиск'
   },
   pageSign: {
     authorization: 'Авторизация',
