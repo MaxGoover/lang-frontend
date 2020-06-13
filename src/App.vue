@@ -14,14 +14,14 @@
 </template>
 
 <script>
-const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/AppHeader')
 const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/AppFooter')
+const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/AppHeader')
 
 export default {
   name: 'App',
   components: {
-    AppHeader,
-    AppFooter
+    AppFooter,
+    AppHeader
   }
 }
 </script>

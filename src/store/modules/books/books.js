@@ -8,7 +8,7 @@ export default {
         description: 'Первая глава первой книги о Гарри Поттере',
         imageId: 'Uven93e9cwIEic8e32',
         parts: 7,
-        levels: ['B2', 'C1'],
+        level: ['B2', 'C1'],
         rating: 4,
         ratingCount: 100,
         youtubePlaylistId: 'er7638es2JD781j'
@@ -19,7 +19,7 @@ export default {
         description: 'Вторая глава первой книги о Гарри Поттере',
         imageId: 'ks5Q13m9cwIEic8e32',
         parts: 7,
-        levels: ['B1', 'B2'],
+        level: ['B1', 'B2'],
         rating: 3.5,
         ratingCount: 55,
         youtubePlaylistId: 'd628shes2JD781j'
@@ -30,7 +30,7 @@ export default {
         description: 'Третья глава первой книги о Гарри Поттере',
         imageId: 'mu75m7j3e9cwIEic8e32',
         parts: 7,
-        levels: ['A2'],
+        level: ['A2'],
         rating: 2,
         ratingCount: 80,
         youtubePlaylistId: 'lt6rr38es2JD781j'
