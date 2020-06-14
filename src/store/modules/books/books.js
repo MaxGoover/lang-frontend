@@ -170,6 +170,7 @@ export default {
     ]
   },
   getters: {
+    bookParts: state => state.bookParts,
     books: state => state.books
   },
   mutations: {

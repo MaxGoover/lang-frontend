@@ -5,7 +5,7 @@
     </v-card-title>
     <v-card-actions>
       <v-spacer/>
-      <v-btn>{{ $t('pageBooks.open') }}</v-btn>
+      <v-btn :to="{ name: 'BookPart', params: { bookId: this.bookId, partId: part.id } }">{{ $t('pageBooks.open') }}</v-btn>
     </v-card-actions>
   </v-card>
 </template>

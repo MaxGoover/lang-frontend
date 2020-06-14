@@ -1,10 +1,14 @@
 <template>
-
+  <v-container grid-list-md v-if="bookPart">
+    <v-layout row wrap>
+      <v-flex xs12 sm10 offset-sm1>
+          <!--Контент-->
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'BookPart',
   props: {
@@ -12,7 +16,9 @@ export default {
     partId: { type: String }
   },
   computed: {
-    ...mapState('books', ['bookParts'])
+    bookPart () {
+      return this.$store.getters['books/bookParts'].find(part => part.bookPartId === this.partId)
+    }
   }
 }
 // 35^14
