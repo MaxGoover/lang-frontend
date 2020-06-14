@@ -34,6 +34,8 @@ export default {
   pageBooks: {
     goTo: 'Перейти',
     level: 'Уровень',
+    load: 'Загрузить',
+    open: 'Открыть',
     parts: 'частей',
     search: 'Поиск'
   },

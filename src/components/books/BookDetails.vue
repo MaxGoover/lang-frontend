@@ -44,7 +44,7 @@
               <span>({{ book.ratingCount }})</span>
             </div>
             <v-spacer/>
-            <v-btn>{{ $t('pageBooks.goTo') }}</v-btn>
+            <v-btn>{{ $t('pageBooks.load') }}</v-btn>
           </v-card-actions>
         </v-flex>
 
