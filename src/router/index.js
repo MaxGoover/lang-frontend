@@ -17,6 +17,13 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/books/book/:id',
+    name: 'Book',
+    props: true,
+    component: () => import(/* webpackChunkName: "book" */ '../components/books/Book'),
+    beforeEnter: authGuard
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/sign/Login.vue')

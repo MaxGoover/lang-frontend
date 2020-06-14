@@ -9,7 +9,7 @@
           <v-layout row>
 
             <!--Поиск по тексту-->
-            <v-flex xs7 sm8 md9>
+            <v-flex xs6 sm8 md9>
               <v-text-field
                 v-model="searchByText"
                 :label="$t('pageBooks.search')"
@@ -18,7 +18,7 @@
             <v-spacer/>
 
             <!--Поиск по уровню-->
-            <v-flex xs5 sm4 md3>
+            <v-flex xs5 sm3 md2>
               <v-select
                 v-model="searchByLevel"
                 multiple

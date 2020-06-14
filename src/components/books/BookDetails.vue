@@ -44,9 +44,7 @@
               <span>({{ book.ratingCount }})</span>
             </div>
             <v-spacer/>
-            <v-btn
-              :to="{ name: 'Book', params: { id: book.id } }"
-            >{{ $t('pageBooks.goTo') }}</v-btn>
+            <v-btn>{{ $t('pageBooks.goTo') }}</v-btn>
           </v-card-actions>
         </v-flex>
 
@@ -59,8 +57,10 @@
 import BookHelper from '../../helpers/BookHelper'
 
 export default {
-  name: 'BooksListItem',
-  props: { book: { type: Object } },
+  name: 'BookDetails',
+  props: {
+    book: { type: Object }
+  },
   methods: {
     getBookLevels: BookHelper.getBookLevels
   }
