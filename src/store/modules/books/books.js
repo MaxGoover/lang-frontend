@@ -164,7 +164,7 @@ export default {
           {
             origWord: 'Hello5',
             transWord: 'Привет5'
-          },
+          }
         ]
       }
     ]

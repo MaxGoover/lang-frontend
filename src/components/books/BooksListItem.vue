@@ -45,7 +45,7 @@
             </div>
             <v-spacer/>
             <v-btn
-              :to="{ name: 'Book', params: { id: book.id } }"
+              :to="{ name: 'Book', params: { bookId: book.id } }"
             >{{ $t('pageBooks.goTo') }}</v-btn>
           </v-card-actions>
         </v-flex>
