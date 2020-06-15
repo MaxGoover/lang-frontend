@@ -18,12 +18,8 @@ export default {
     user: getUserFromLocalStorage() || {}
   },
   getters: {
-    loading (state) {
-      return state.loading
-    },
-    user (state) {
-      return state.user
-    }
+    loading: (state) => state.loading,
+    user: (state) => state.user
   },
   mutations: {
     clearUser (state) {
@@ -49,8 +45,7 @@ export default {
     },
 
     /**
-     * Сохранение данных о пользователе.
-     *
+     * Изменение данных о пользователе.
      * @param commit
      * @param payload
      */

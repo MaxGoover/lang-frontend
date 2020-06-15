@@ -1,6 +1,6 @@
 import authorization from './modules/auth/authorization'
-import filter from './modules/filter/filter'
-import mainMenu from './modules/menu/mainMenu'
+import books from './modules/books/books'
+import general from './modules/general/general'
 import menu from './modules/menu/menu'
 import user from './modules/user/user'
 import Vue from 'vue'
@@ -12,8 +12,8 @@ export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   modules: {
     authorization,
-    filter,
-    mainMenu,
+    books,
+    general,
     menu,
     user
   }

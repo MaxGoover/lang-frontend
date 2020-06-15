@@ -9,15 +9,9 @@ export default {
     token: Authorization.getAccessToken()
   },
   getters: {
-    isAuthorized (state) {
-      return state.isAuthorized
-    },
-    loading (state) {
-      return state.loading
-    },
-    token (state) {
-      return state.token
-    }
+    isAuthorized: (state) => state.isAuthorized,
+    loading: (state) => state.loading,
+    token: (state) => state.token
   },
   mutations: {
     clearLocalStorage () {
@@ -46,37 +40,6 @@ export default {
   },
   actions: {
     /**
-     * Создание пользователя администратором.
-     *
-     * @param commit
-     * @param email
-     * @param password
-     * @param retypePassword
-     * @param type
-     * @returns {Promise<*>}
-     */
-    async administrationSignUp ({ commit }, { email, password, retypePassword }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('closed/authorization/sign-up', {
-          SignUpForm: {
-            username: email,
-            email,
-            password,
-            retypePassword
-          }
-        })
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
-    },
-
-    /**
      * Изменение пароля.
      *
      * @param commit
@@ -85,15 +48,14 @@ export default {
      * @param retypePassword
      * @returns {Promise<*>}
      */
-    async changePassword ({ commit }, { oldPassword, password, retypePassword }) {
+    async changePassword ({ commit }, { oldPassword, password }) {
       commit('toggleLoading', true)
 
       try {
         const { data } = await axios.post('closed/authorization/change-password', {
           ChangePasswordForm: {
             oldPassword,
-            password,
-            retypePassword
+            password
           }
         })
 
@@ -105,38 +67,27 @@ export default {
       }
     },
 
-    /**
-     * Авторизация пользователя.
-     *
-     * @param commit
-     * @param username
-     * @param password
-     * @param type
-     * @param rememberMe
-     * @returns {Promise<*>}
-     */
-    async login ({ commit }, { username, password, rememberMe }) {
-      commit('toggleLoading', true)
+    async login ({ commit }, payload) {
+      this.dispatch('general/startLoading')
+      axios.post('auth/auth/login', {
+        LoginForm: payload
+      })
+        .then(
+          response => {
+            const data = response.data
+            if (data.user) {
+              this.dispatch('user/setUser', data.user)
+            }
 
-      try {
-        const { data } = await axios.post('authorization/login', { username, password, rememberMe })
-
-        // Сохранение данных о пользователе
-        if (data.user) {
-          this.dispatch('user/setUser', data.user)
-        }
-
-        // Сохранение токена
-        if (typeof data.token === 'object') {
-          commit('setToken', data.token)
-        }
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
+            if (typeof data.token === 'object') {
+              commit('setToken', data.token)
+            }
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
     },
 
     /**
@@ -145,76 +96,65 @@ export default {
      * @param commit
      */
     async logout ({ commit }) {
-      commit('toggleLoading', true)
+      this.dispatch('general/startLoading')
 
-      try {
-        await axios.post('closed/authorization/logout')
-      } catch (e) {
-      }
+      axios.post('auth/auth/logout')
+        .then(
+          response => {
+            // Удаление данных о пользователе
+            this.dispatch('user/clearUser')
 
-      commit('toggleLoading', false)
+            // Удаление токена
+            commit('clearToken')
 
-      // Удаление данных о пользователе
-      this.dispatch('user/clearUser')
-
-      // Удаление токена
-      commit('clearToken')
-
-      // Очистка localStorage
-      commit('clearLocalStorage')
-
-      return true
+            // Очистка localStorage
+            commit('clearLocalStorage')
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
     },
 
     /**
-     * Авторизация пользователя.
-     *
+     * Регистрация пользователя.
      * @param commit
-     * @param email
-     * @param password
-     * @param retypePassword
-     * @param type
-     * @returns {Promise<*>}
+     * @param payload
+     * @returns {Promise<unknown>}
      */
-    async signUp ({ commit }, { email, password, retypePassword }) {
-      commit('toggleLoading', true)
+    async signup ({ commit }, payload) {
+      this.dispatch('general/startLoading')
 
-      try {
-        const { data } = await axios.post('authorization/sign-up', {
-          SignUpForm: {
-            username: email,
-            email,
-            password,
-            retypePassword
-          }
-        })
+      axios.post('auth/signup/signup', {
+        SignupForm: payload
+      })
+        .then(
+          response => {
+            const data = response.data
+            if (data.user) {
+              this.dispatch('user/setUser', data.user)
+            }
 
-        // Сохранение данных о пользователе
-        if (data.user) {
-          this.dispatch('user/setUser', data.user)
-        }
-
-        // Сохранение токена
-        if (data.token) {
-          commit('setToken', data.token)
-        }
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-
-        // Удаление данных о пользователе
-        this.dispatch('user/clearUser')
-
-        // Удаление токена
-        commit('clearToken')
-
-        // Очистка localStorage
-        commit('clearLocalStorage')
-
-        return Promise.reject(e)
-      }
+            if (typeof data.token === 'object') {
+              commit('setToken', data.token)
+            }
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
+        // commit('toggleLoading', false)
+        //
+        // // Удаление данных о пользователе
+        // this.dispatch('user/clearUser')
+        //
+        // // Удаление токена
+        // commit('clearToken')
+        //
+        // // Очистка localStorage
+        // commit('clearLocalStorage')
     },
 
     /**

@@ -1,52 +1,33 @@
-import { axios } from '@/axios'
-// import { setToLocalStore } from '@/helpers/Router' // мы его создадим позже
+// import { axios } from '@/axios'
 
 export default {
   namespaced: true,
   state: {
     loading: false,
-    menu: [] // здесь будет список меню
+    showDrawer: false
   },
   getters: {
     loading (state) {
       return state.loading
     },
-    menu (state) {
-      return state.menu
+    showDrawer (state) {
+      return state.showDrawer
     }
   },
   mutations: {
-    setMenu (state, payload) {
-      state.menu = payload
+    setShowDrawer (state) {
+      state.showDrawer = !state.showDrawer
     },
-    toggleLoading (state, payload) {
-      state.loading = payload
+    startLoading (state) {
+      state.loading = true
+    },
+    stopLoading (state) {
+      state.loading = true
     }
   },
   actions: {
-    /**
-     * Загрузка меню.
-     *
-     * @param commit
-     * @returns {Promise<*>}
-     */
-    async setMenu ({ commit }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('closed/menu') // обращаемся к API к контроллеру MenuController
-
-        commit('setMenu', data)
-
-        // Сохранение меню в localStorage
-        // setToLocalStore(data)
-
-        commit('toggleLoading', false)
-        return data
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
+    setShowDrawer ({ commit }) {
+      commit('setShowDrawer')
     }
   }
 }

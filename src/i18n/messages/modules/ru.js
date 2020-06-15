@@ -1,61 +1,53 @@
 export default {
-  app: {
-    defaultImage: '/img/default-image.png',
-    defaultUserImage: '/img/default-user.png',
-    mainImage: '/img/main-image.jpg',
-    name: 'M-leef'
-  },
-  auth: {
-    authError: 'Неверный пароль или логин',
-    cannotSignUp: 'На данный момент нет возможности зарегистироваться.',
-    createAccount: 'Создать аккаунт',
-    joinUs: 'Вступить в союз',
+  appHeader: {
+    learnWords: 'Учить слова',
     login: 'Войти',
     logout: 'Выйти',
-    noAccount: 'Еще нет аккаунта?',
-    password: 'Пароль',
-    passwordRequired: 'Необходимо ввести пароль',
-    rememberMe: 'Запомни меня',
-    signUp: 'Зарегистрируйтесь',
-    username: 'Логин',
-    usernameRequired: 'Необходимо ввести логин'
+    main: 'Главная',
+    myCabinet: 'Мой кабинет',
+    read: 'Читать',
+    signup: 'Зарегистрироваться'
+  },
+  app: {
+    name: 'M-leef'
   },
   common: {
-    add: 'Добавить',
-    choosePeriod: 'Выберите период',
-    enterValue: 'Введите значение'
+    no: 'Нет',
+    yes: 'Да'
   },
-  content: {
-    goBack: 'Назад',
-    saveChanges: 'Сохранить изменения',
-    search: 'Поиск'
+  dimmer: {
+    askConfirmLogout: 'Вы действительно хотите выйти?'
   },
   error: {
+    minLengthError: 'Не менее {min} символов',
+    maxLengthError: 'Не более {max} символов',
     pageNotFound: 'Страница не найдена',
-    tryFollowingPages: 'Пожалуйста, попробуйте перейти на одну из следующих страниц:'
+    tryFollowingPages: 'Попробуйте перейти на одну из следующих страниц:'
   },
-  filter: {
-    nameProject: 'Название проекта'
+  img: {
+    img1: '/img/kitty.png'
   },
   menu: {
-    dashboard: 'Приборная панель',
-    login: 'Авторизация',
-    main: 'Главная',
-    targetEditor: 'Редактор таргетов',
-    userActions: 'Меню пользователя'
+    back: 'Назад',
+    main: 'Главная'
   },
-  target: {
-    targets: 'Таргеты'
+  pageBooks: {
+    goTo: 'Перейти',
+    level: 'Уровень',
+    load: 'Загрузить',
+    open: 'Открыть',
+    parts: 'частей',
+    search: 'Поиск'
   },
-  targetEditor: {
-    autoUpdate: 'Автообновление',
-    inversion: 'Инверсивность'
-  },
-  user: {
-    avatar: 'Аватар'
-  },
-  validation: {
-    required: 'Обязательное значение'
+  pageSign: {
+    authorization: 'Авторизация',
+    password: 'Пароль',
+    passwordRequired: 'Необходимо ввести пароль',
+    registration: 'Регистрация',
+    rememberMe: 'Запомни меня',
+    signIn: 'Войти',
+    signUp: 'Зарегистрироваться',
+    username: 'Логин'
   }
 }
 // зеленая - создает

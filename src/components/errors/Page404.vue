@@ -10,8 +10,9 @@
 
         <!--Ссылка на главную страница-->
         <v-btn
-          flat color="primary"
-          :to="{ name: 'main' }"
+          color="primary"
+          text
+          :to="{ name: 'Main' }"
         >
           ⟵ {{ $t('menu.main') }}
         </v-btn>
@@ -20,10 +21,11 @@
 
         <!--Вернуться назад-->
         <v-btn
-          flat color="primary"
+          color="primary"
+          text
           @click="goBack"
         >
-          ⟵ {{ $t('content.goBack') }}
+          ⟵ {{ $t('menu.back') }}
         </v-btn>
 
       </v-card-text>
