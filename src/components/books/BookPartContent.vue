@@ -12,6 +12,14 @@
     </div>
 
     <div class="mt-2">
+      <v-slider
+        v-model="fontSize"
+        min="10"
+        max="30"
+        step="2"
+        tick-size="5"
+        :label="`Размер шрифта (${fontSize})`"
+      />
       <v-tabs
         v-model="tabMode"
         color="accent"
@@ -23,12 +31,16 @@
         <v-tab-item key="en">
           <div v-for="(p, i) in part.content" :key="`p1${i}`">
             <span>&nbsp;&nbsp;</span>
-            <span v-for="(sentence, y) in p.sentences" :key="`p1${i}s1${y}`">
+            <span
+              v-for="(sentence, y) in p.sentences"
+              :key="`p1${i}s1${y}`"
+              :style="textFontSize"
+            >
               <span>
                 {{ sentence.origText }}
               </span>
               <v-icon
-                size="18"
+                :size="fontSize"
                 @click.prevent="toggleVisibilityHelp(i, y)"
               >
                 mdi-help</v-icon>
@@ -42,7 +54,30 @@
           </div>
         </v-tab-item>
         <v-tab-item key="ru">
-          jfgnboevm968u45h8c45v94594595
+          <v-container>
+            <v-layout row wrap v-for="(p, i) in part.content" :key="`p2${i}`">
+              <v-flex xs6>
+                <span>&nbsp;&nbsp;</span>
+                <span
+                  v-for="(sentence, y) in p.sentences"
+                  :key="`p2${i}s2${y}orig`"
+                  :style="textFontSize"
+                >
+                  <span>{{ sentence.origText }}</span>
+                </span>
+              </v-flex>
+              <v-flex xs6>
+                <span>&nbsp;&nbsp;</span>
+                <span
+                  v-for="(sentence, y) in p.sentences"
+                  :key="`p2${i}s2${y}trans`"
+                  :style="textFontSize"
+                >
+                  <span>{{ sentence.transText }}</span>
+                </span>
+              </v-flex>
+            </v-layout>
+          </v-container>
         </v-tab-item>
       </v-tabs>
     </div>
@@ -59,11 +94,15 @@ export default {
   },
   data () {
     return {
+      fontSize: 18,
       visibilityKeys: [],
       tabMode: 'en'
     }
   },
   computed: {
+    textFontSize () {
+      return { fontSize: `${this.fontSize}px` }
+    },
     width () {
       return CommonHelper.widthBreakpoints(this.$vuetify.breakpoint.name)
     }

@@ -5,7 +5,7 @@
         <book-part-content :part="bookPart" />
       </v-flex>
       <v-flex xs12 sm10 offset-sm1>
-<!--        <book-part-words :words="bookPart.words" />-->
+        <book-part-words :words="bookPart.words"/>
       </v-flex>
     </v-layout>
   </v-container>
@@ -13,11 +13,13 @@
 
 <script>
 const BookPartContent = () => import(/* webpackChunkName: "bookPartContent" */ './BookPartContent')
+const BookPartWords = () => import(/* webpackChunkName: "bookPartWords" */ './BookPartWords')
 
 export default {
   name: 'BookPart',
   components: {
-    BookPartContent
+    BookPartContent,
+    BookPartWords
   },
   props: {
     bookId: { type: String },
