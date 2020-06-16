@@ -29,7 +29,8 @@
             {{ book.description }}
           </v-card-subtitle>
           <v-card-text>
-            {{ $t('pageBooks.level') }}: {{ getBookLevels(book.level) }}, {{ book.parts.length }} {{ $t('pageBooks.parts') }}
+            {{ $t('pageBooks.level') }}: {{ getBookLevels(book.level) }}
+<!--            {{ $t('pageBooks.level') }}: {{ getBookLevels(book.level) }}, {{ book.parts.length }} {{ $t('pageBooks.parts') }}-->
           </v-card-text>
           <v-card-actions>
             <v-rating
@@ -45,7 +46,7 @@
             </div>
             <v-spacer/>
             <v-btn
-              :to="{ name: 'Book', params: { bookId: book.id } }"
+              :to="{ name: 'Book', params: { bookId: book._id } }"
             >{{ $t('pageBooks.goTo') }}</v-btn>
           </v-card-actions>
         </v-flex>

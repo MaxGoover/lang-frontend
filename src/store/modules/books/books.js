@@ -91,6 +91,8 @@ export default {
         .then(
           response => {
             console.log(1, response)
+            console.log(5, response.data.query)
+            commit('setBooks', response.data.query)
           },
           reject => {
             console.log(2, reject.response)
