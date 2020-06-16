@@ -39,35 +39,7 @@ export default {
     }
   },
   actions: {
-    /**
-     * Изменение пароля.
-     *
-     * @param commit
-     * @param oldPassword
-     * @param password
-     * @param retypePassword
-     * @returns {Promise<*>}
-     */
-    async changePassword ({ commit }, { oldPassword, password }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('closed/authorization/change-password', {
-          ChangePasswordForm: {
-            oldPassword,
-            password
-          }
-        })
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
-    },
-
-    async login ({ commit }, payload) {
+    login ({ commit }, payload) {
       this.dispatch('general/startLoading')
       axios.post('auth/auth/login', {
         LoginForm: payload
@@ -95,7 +67,7 @@ export default {
      *
      * @param commit
      */
-    async logout ({ commit }) {
+    logout ({ commit }) {
       this.dispatch('general/startLoading')
 
       axios.post('auth/auth/logout')
@@ -123,7 +95,7 @@ export default {
      * @param payload
      * @returns {Promise<unknown>}
      */
-    async signup ({ commit }, payload) {
+    signup ({ commit }, payload) {
       this.dispatch('general/startLoading')
 
       axios.post('auth/signup/signup', {

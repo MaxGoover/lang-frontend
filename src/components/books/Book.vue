@@ -4,31 +4,31 @@
       <v-flex xs12 sm10 offset-sm1>
         <book-details :book="book"/>
       </v-flex>
-      <v-flex
-        v-for="part in book.parts"
-        :key="part.id"
-        xs12 sm10 offset-sm1>
-        <book-part-list-item
-          :bookId="book.id"
-          :part="part"
-        />
-      </v-flex>
+<!--      <v-flex-->
+<!--        v-for="part in book.parts"-->
+<!--        :key="part.id"-->
+<!--        xs12 sm10 offset-sm1>-->
+<!--        <book-part-list-item-->
+<!--          :bookId="book.id"-->
+<!--          :part="part"-->
+<!--        />-->
+<!--      </v-flex>-->
     </v-layout>
   </v-container>
 </template>
 
 <script>
 const BookDetails = () => import(/* webpackChunkName: "bookDetails" */ './BookDetails')
-const BookPartListItem = () => import(/* webpackChunkName: "bookPartListItem" */ './BookPartListItem')
+// const BookPartListItem = () => import(/* webpackChunkName: "bookPartListItem" */ './BookPartListItem')
 
 export default {
   name: 'Book',
   components: {
-    BookDetails,
-    BookPartListItem
+    BookDetails
+    // BookPartListItem
   },
   props: {
-    id: { type: String, required: true }
+    id: { type: String }
   },
   computed: {
     book () {
