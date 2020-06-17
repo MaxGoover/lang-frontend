@@ -17,7 +17,7 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/books/book/:id',
+    path: '/books/book/:bookId',
     name: 'Book',
     props: true,
     component: () => import(/* webpackChunkName: "book" */ '../components/books/Book'),

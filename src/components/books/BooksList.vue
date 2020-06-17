@@ -32,11 +32,12 @@
 
       <v-flex
         v-for="book in filteredBooks"
-        :key="book.id"
+        :key="book._id"
         offset-lg2
         xs12 sm12 lg8
       >
         <!--Карточка книги-->
+        <pre>{{ book._id }}</pre>
         <books-list-item :book="book"/>
       </v-flex>
     </v-layout>
