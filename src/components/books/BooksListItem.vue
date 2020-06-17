@@ -29,8 +29,7 @@
             {{ book.description }}
           </v-card-subtitle>
           <v-card-text>
-            {{ $t('pageBooks.level') }}: {{ getBookLevels(book.level) }}
-<!--            {{ $t('pageBooks.level') }}: {{ getBookLevels(book.level) }}, {{ book.parts.length }} {{ $t('pageBooks.parts') }}-->
+            {{ $t('pageBooks.level') }}: {{ getBookLevels(book.level) }}, {{ book.parts.length }} {{ $t('pageBooks.parts') }}
           </v-card-text>
           <v-card-actions>
             <v-rating
