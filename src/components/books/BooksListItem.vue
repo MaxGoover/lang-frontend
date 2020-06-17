@@ -11,7 +11,7 @@
           <v-img
             height="150px"
             width="150px"
-            :src="$t('img.img1')"
+            :src="book.imageUrl"
           />
           <div class="text-center">
             <v-btn color="white">

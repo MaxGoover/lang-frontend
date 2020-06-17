@@ -98,7 +98,7 @@ export default {
           icon: 'mdi-eye',
           route: { name: 'Books' },
           title: this.$i18n.t('appHeader.read'),
-          event: this.getBooks
+          event: this.blank
         },
         {
           icon: 'mdi-account-circle',
@@ -129,9 +129,6 @@ export default {
   },
   methods: {
     blank () {},
-    getBooks () {
-      this.$store.dispatch('books/getBooks')
-    },
     hideDimmer () {
       this.dialog = false
     },
