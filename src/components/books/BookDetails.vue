@@ -44,7 +44,7 @@
               <span>({{ book.ratingCount }})</span>
             </div>
             <v-spacer/>
-            <v-btn>{{ $t('pageBooks.load') }}</v-btn>
+            <v-btn v-if="canLoadBook(book._id)">{{ $t('pageBooks.load') }}</v-btn>
           </v-card-actions>
         </v-flex>
 
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BookHelper from '../../helpers/BookHelper'
 
 export default {
@@ -61,8 +62,20 @@ export default {
   props: {
     book: { type: Object }
   },
+  computed: {
+    ...mapState('general', ['loading']),
+    ...mapState('authorization', ['isAuthorized']),
+    ...mapState('user', ['userData'])
+  },
   methods: {
-    getBookLevels: BookHelper.getBookLevels
+    canLoadBook (bookId) {
+      let book = this.getUserDataBook(bookId)
+      return this.isAuthorized && !this.loading && !book
+    },
+    getBookLevels: BookHelper.getBookLevels,
+    getUserDataBook (bookId) {
+      return this.userData.books[bookId]
+    }
   }
 }
 </script>

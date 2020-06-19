@@ -1,13 +1,16 @@
+import { axios } from '../../../axios'
+
+const defaultUserData = {
+  books: {},
+  words: {}
+}
+
 /**
  * Возвращает данные о пользователе из localStorage.
  */
 const getUserFromLocalStorage = () => {
   let user = {}
-  try {
-    user = JSON.parse(localStorage.getItem('user'))
-  } catch (e) {
-  }
-
+  try { user = JSON.parse(localStorage.getItem('user')) } catch (e) {}
   return user
 }
 
@@ -15,7 +18,8 @@ export default {
   namespaced: true,
   state: {
     loading: false,
-    user: getUserFromLocalStorage() || {}
+    user: getUserFromLocalStorage() || {},
+    userData: defaultUserData
   },
   getters: {
     loading: (state) => state.loading,
@@ -30,25 +34,30 @@ export default {
       localStorage.setItem('user', JSON.stringify(payload))
       state.user = payload
     },
+    setUserData (state, payload) {
+      state.userData = payload
+    },
     toggleLoading (state, payload) {
       state.loading = payload
     }
   },
   actions: {
-    /**
-     * Удаление данных о пользователе.
-     *
-     * @param commit
-     */
     clearUser ({ commit }) {
       commit('clearUser')
     },
 
-    /**
-     * Изменение данных о пользователе.
-     * @param commit
-     * @param payload
-     */
+    getUserData ({ commit }, payload) {
+      this.dispatch('general/startLoading')
+      axios.post('book/book-part/index', payload)
+        .then(
+          response => {
+            commit('setUserData', response.data.query)
+          },
+          reject => { console.log(2, reject.response) })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
+    },
+
     setUser ({ commit }, payload) {
       commit('setUser', payload)
     }

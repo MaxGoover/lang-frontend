@@ -25,6 +25,7 @@ export default {
   },
   created () {
     this.$store.dispatch('books/getBooks')
+    this.$store.dispatch('user/getUserData')
   }
 }
 </script>
