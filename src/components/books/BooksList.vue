@@ -37,7 +37,6 @@
         xs12 sm12 lg8
       >
         <!--Карточка книги-->
-        <pre>{{ book._id }}</pre>
         <books-list-item :book="book"/>
       </v-flex>
     </v-layout>
@@ -47,12 +46,10 @@
 <script>
 import { mapState } from 'vuex'
 
-const BooksListItem = () => import(/* webpackChunkName: "booksListItem" */ './BooksListItem')
-
 export default {
   name: 'BooksList',
   components: {
-    BooksListItem
+    BooksListItem: () => import(/* webpackChunkName: "booksListItem" */ './BooksListItem')
   },
   data () {
     return {

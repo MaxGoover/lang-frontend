@@ -1,6 +1,5 @@
 <template>
   <v-card>
-    <pre>{{showDrawer}}</pre>
     <v-navigation-drawer
       v-model="showDrawer"
       absolute

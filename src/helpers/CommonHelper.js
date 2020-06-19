@@ -1,5 +1,7 @@
 export default {
-  widthBreakpoints: function (name) {
+  isEmptyObject: obj => Object.keys(obj).length,
+
+  widthBreakpoints: name => {
     switch (name) {
       case 'xs': return '220px'
       case 'sm': return '400px'
