@@ -1,11 +1,12 @@
 export default {
   appHeader: {
+    grammar: 'Грамматика',
     learnWords: 'Учить слова',
     login: 'Войти',
     logout: 'Выйти',
     main: 'Главная',
     myCabinet: 'Мой кабинет',
-    read: 'Читать',
+    reading: 'Чтение',
     signup: 'Зарегистрироваться'
   },
   app: {

@@ -97,13 +97,13 @@ export default {
         {
           icon: 'mdi-eye',
           route: { name: 'Books' },
-          title: this.$i18n.t('appHeader.read'),
+          title: this.$i18n.t('appHeader.reading'),
           event: this.blank
         },
         {
-          icon: 'mdi-account-circle',
-          route: { name: 'Profile' },
-          title: this.$i18n.t('appHeader.myCabinet'),
+          icon: 'mdi-ab-testing',
+          route: { name: 'Grammar' },
+          title: this.$i18n.t('appHeader.grammar'),
           event: this.blank
         },
         {

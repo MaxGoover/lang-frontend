@@ -41,9 +41,9 @@ const routes = [
     component: () => import(/* webpackChunkName: "signup" */ '../views/sign/Signup.vue')
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
+    path: '/grammar',
+    name: 'Grammar',
+    component: () => import(/* webpackChunkName: "grammar" */ '../views/Grammar.vue'),
     beforeEnter: authGuard
   },
   {

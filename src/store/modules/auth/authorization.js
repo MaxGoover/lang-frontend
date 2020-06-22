@@ -35,7 +35,7 @@ export default {
     }
   },
   actions: {
-    login ({ commit, getters, state }, payload) {
+    login ({ commit }, payload) {
       this.dispatch('general/startLoading')
       axios.post('auth/auth/login', {
         LoginForm: payload
@@ -63,7 +63,7 @@ export default {
      *
      * @param commit
      */
-    logout ({ commit, getters }) {
+    logout ({ commit }) {
       this.dispatch('general/startLoading')
 
       axios.post('auth/auth/logout')

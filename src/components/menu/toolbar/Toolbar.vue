@@ -39,17 +39,12 @@ export default {
         {
           icon: 'mdi-eye',
           route: '/books',
-          title: this.$i18n.t('appHeader.read')
+          title: this.$i18n.t('appHeader.reading')
         },
         {
-          icon: 'mdi-puzzle',
-          route: '/words',
-          title: this.$i18n.t('appHeader.learnWords')
-        },
-        {
-          icon: 'mdi-account-circle',
-          route: '/profile',
-          title: this.$i18n.t('appHeader.myCabinet')
+          icon: 'mdi-ab-testing',
+          route: '/grammar',
+          title: this.$i18n.t('appHeader.grammar')
         },
         {
           icon: 'mdi-logout',
