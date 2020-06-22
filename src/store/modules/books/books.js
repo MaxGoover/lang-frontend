@@ -3,8 +3,8 @@ import { axios } from '../../../axios'
 export default {
   namespaced: true,
   state: {
-    books: [],
-    bookPart: {}
+    bookPart: {},
+    books: []
   },
   getters: {
     books: state => state.books
