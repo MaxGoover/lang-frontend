@@ -1,7 +1,6 @@
+import { i18n } from '../i18n/index'
 import Authorization from '../helpers/Authorization'
 import Axios from 'axios'
-import { i18n } from '../i18n/index'
-import router from '../router/index'
 import store from '../store/index'
 
 /**
@@ -16,23 +15,6 @@ const axios = Axios.create({
     'Accept-Language': i18n.locale
   }
 })
-
-/**
- * Выход из системы.
- */
-const logout = async () => {
-  // Выход из системы
-  await store.dispatch('authorization/logout')
-
-  // Удаляет заголовок авторизации
-  delete axios.defaults.headers.common.Authorization
-
-  // Перенаправление на страницу входа
-  await router.push({ name: 'login' })
-
-  // Обновление страницы
-  window.location.reload()
-}
 
 /**
  * Действия перед отправкой запроса к API.
@@ -68,7 +50,7 @@ axios.interceptors.response.use(response => {
       return axios(error.response.config)
     } catch (e) {
       // Выход из системы
-      logout()
+      await store.dispatch('authorization/logout')
     }
   }
 

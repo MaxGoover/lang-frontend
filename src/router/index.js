@@ -53,7 +53,6 @@ const routes = [
   }
 ]
 
-const isAuthorized = store.getters['authorization/isAuthorized']
 const router = new VueRouter({
   base: process.env.BASE_URL,
   mode: 'history',
@@ -62,6 +61,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // Если пользователь авторизован
+  const isAuthorized = store.getters['authorization/isAuthorized']
+
   // и путь на страницу авторизации или регистрации, то ошибка 404
   if (isAuthorized && (to.name === 'Login' || to.name === 'Signup')) {
     next({ name: 'Page404' })
@@ -73,7 +74,7 @@ router.beforeEach((to, from, next) => {
 })
 
 function authGuard (to, from, next) {
-  isAuthorized ? next() : next({ name: 'Login' })
+  store.getters['authorization/isAuthorized'] ? next() : next({ name: 'Login' })
 }
 
 export default router
