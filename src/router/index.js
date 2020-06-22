@@ -43,7 +43,7 @@ const routes = [
   {
     path: '/grammar',
     name: 'Grammar',
-    component: () => import(/* webpackChunkName: "grammar" */ '../views/Grammar.vue'),
+    component: () => import(/* webpackChunkName: "grammar" */ '../components/grammar/Grammar.vue'),
     beforeEnter: authGuard
   },
   {

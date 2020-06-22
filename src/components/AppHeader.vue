@@ -101,7 +101,7 @@ export default {
           event: this.blank
         },
         {
-          icon: 'mdi-ab-testing',
+          icon: 'mdi-eye',
           route: { name: 'Grammar' },
           title: this.$i18n.t('appHeader.grammar'),
           event: this.blank
