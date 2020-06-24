@@ -2,7 +2,6 @@
   <v-form
     @submit="confirmForm"
   >
-
     <!--Логин-->
     <v-text-field
       v-model="username"

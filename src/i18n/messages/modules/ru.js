@@ -7,7 +7,8 @@ export default {
     main: 'Главная',
     myCabinet: 'Мой кабинет',
     reading: 'Чтение',
-    signup: 'Зарегистрироваться'
+    signup: 'Зарегистрироваться',
+    video: 'Видео'
   },
   app: {
     name: 'M-leef'

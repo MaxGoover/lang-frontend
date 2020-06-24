@@ -102,8 +102,8 @@ export default {
         },
         {
           icon: 'mdi-eye',
-          route: { name: 'Grammar' },
-          title: this.$i18n.t('appHeader.grammar'),
+          route: { name: 'Video' },
+          title: this.$i18n.t('appHeader.video'),
           event: this.blank
         },
         {

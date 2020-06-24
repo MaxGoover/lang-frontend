@@ -36,8 +36,8 @@ export default {
         },
         {
           icon: 'mdi-ab-testing',
-          route: '/grammar',
-          title: this.$i18n.t('appHeader.grammar')
+          route: '/video',
+          title: this.$i18n.t('appHeader.video')
         },
         {
           icon: 'mdi-logout',

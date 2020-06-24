@@ -31,6 +31,18 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/grammar',
+    name: 'Grammar',
+    component: () => import(/* webpackChunkName: "grammar" */ '../components/grammar/Grammar.vue'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/video',
+    name: 'Video',
+    component: () => import(/* webpackChunkName: "video" */ '../views/Video.vue'),
+    beforeEnter: authGuard
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/sign/Login.vue')
@@ -39,12 +51,6 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: () => import(/* webpackChunkName: "signup" */ '../views/sign/Signup.vue')
-  },
-  {
-    path: '/grammar',
-    name: 'Grammar',
-    component: () => import(/* webpackChunkName: "grammar" */ '../components/grammar/Grammar.vue'),
-    beforeEnter: authGuard
   },
   {
     path: '*',
