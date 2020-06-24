@@ -22,7 +22,7 @@
         label="File input"
         multiple
         prepend-icon="mdi-camera"
-      ></v-file-input>
+      />
 
       <v-btn
         block
@@ -42,7 +42,7 @@ export default {
   name: 'Video',
   data () {
     return {
-      videos: {}
+      videos: null
     }
   },
   methods: {
