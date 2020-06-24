@@ -1,16 +1,15 @@
 import { axios } from '../../../axios'
 import Authorization from '../../../helpers/Authorization'
+import router from '../../../router/index'
 
 export default {
   namespaced: true,
   state: {
     isAuthorized: Authorization.isAuthorized(),
-    loading: false,
     token: Authorization.getAccessToken()
   },
   getters: {
     isAuthorized: (state) => state.isAuthorized,
-    loading: (state) => state.loading,
     token: (state) => state.token
   },
   mutations: {
@@ -33,41 +32,10 @@ export default {
 
       state.token = Authorization.getAccessToken()
       state.isAuthorized = Authorization.isAuthorized()
-    },
-    toggleLoading (state, payload) {
-      state.loading = payload
     }
   },
   actions: {
-    /**
-     * Изменение пароля.
-     *
-     * @param commit
-     * @param oldPassword
-     * @param password
-     * @param retypePassword
-     * @returns {Promise<*>}
-     */
-    async changePassword ({ commit }, { oldPassword, password }) {
-      commit('toggleLoading', true)
-
-      try {
-        const { data } = await axios.post('closed/authorization/change-password', {
-          ChangePasswordForm: {
-            oldPassword,
-            password
-          }
-        })
-
-        commit('toggleLoading', false)
-        return Promise.resolve(data)
-      } catch (e) {
-        commit('toggleLoading', false)
-        return Promise.reject(e)
-      }
-    },
-
-    async login ({ commit }, payload) {
+    login ({ commit }, payload) {
       this.dispatch('general/startLoading')
       axios.post('auth/auth/login', {
         LoginForm: payload
@@ -95,7 +63,7 @@ export default {
      *
      * @param commit
      */
-    async logout ({ commit }) {
+    logout ({ commit }) {
       this.dispatch('general/startLoading')
 
       axios.post('auth/auth/logout')
@@ -109,6 +77,15 @@ export default {
 
             // Очистка localStorage
             commit('clearLocalStorage')
+
+            // Удаляет заголовок авторизации
+            delete axios.defaults.headers.common.Authorization
+
+            // Перенаправление на страницу входа
+            router.push({ name: 'Main' })
+
+            // Обновление страницы
+            window.location.reload()
           },
           reject => {
             console.log(2, reject.response)
@@ -123,7 +100,7 @@ export default {
      * @param payload
      * @returns {Promise<unknown>}
      */
-    async signup ({ commit }, payload) {
+    signup ({ commit }, payload) {
       this.dispatch('general/startLoading')
 
       axios.post('auth/signup/signup', {
@@ -164,8 +141,6 @@ export default {
      * @returns {Promise<*>}
      */
     async updateToken ({ commit }) {
-      commit('toggleLoading', true)
-
       try {
         const { data } = await axios.post('authorization/update-token', {
           refreshToken: Authorization.getRefreshToken()
@@ -176,10 +151,8 @@ export default {
           commit('setToken', data.token)
         }
 
-        commit('toggleLoading', false)
         return Promise.resolve(data)
       } catch (e) {
-        commit('toggleLoading', false)
         return Promise.reject(e)
       }
     }

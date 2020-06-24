@@ -3,7 +3,7 @@
     <span class="display-1">Слова</span>
     <v-data-iterator
       hide-default-footer
-      :items="words"
+      :items="bookPart.words"
     >
       <template v-slot:default="props">
         <v-row>
@@ -34,10 +34,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'BookPartWords',
-  props: {
-    words: { type: Array }
+  computed: {
+    ...mapState('books', ['bookPart'])
   }
 }
 </script>

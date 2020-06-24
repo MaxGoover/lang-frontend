@@ -54,12 +54,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import BookHelper from '../../helpers/BookHelper'
 
 export default {
   name: 'BookDetails',
   props: {
     book: { type: Object }
+  },
+  computed: {
+    ...mapState('authorization', ['isAuthorized']),
+    ...mapState('general', ['loading'])
   },
   methods: {
     getBookLevels: BookHelper.getBookLevels

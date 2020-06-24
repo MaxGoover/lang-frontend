@@ -97,13 +97,13 @@ export default {
         {
           icon: 'mdi-eye',
           route: { name: 'Books' },
-          title: this.$i18n.t('appHeader.read'),
+          title: this.$i18n.t('appHeader.reading'),
           event: this.blank
         },
         {
-          icon: 'mdi-account-circle',
-          route: { name: 'Profile' },
-          title: this.$i18n.t('appHeader.myCabinet'),
+          icon: 'mdi-eye',
+          route: { name: 'Video' },
+          title: this.$i18n.t('appHeader.video'),
           event: this.blank
         },
         {
@@ -134,18 +134,7 @@ export default {
     },
     logout () {
       this.$store.dispatch('authorization/logout')
-        .then(async () => {
-          // Переадресация на главную страницу
-          await this.$router.push({ name: 'Main' })
-          return true
-        })
-        .then(() => {
-          // Закрываем диалоговое окно
-          this.hideDimmer()
-
-          // Обновляет страницу после выхода
-          window.location.reload()
-        })
+        .then(() => { this.hideDimmer() })
     },
     showDimmer () {
       this.dialog = true

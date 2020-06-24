@@ -11,7 +11,7 @@
           <v-img
             height="150px"
             width="150px"
-            :src="$t('img.img1')"
+            :src="book.imageUrl"
           />
           <div class="text-center">
             <v-btn color="white">
@@ -45,7 +45,7 @@
             </div>
             <v-spacer/>
             <v-btn
-              :to="{ name: 'Book', params: { bookId: book.id } }"
+              :to="{ name: 'Book', params: { bookId: book._id } }"
             >{{ $t('pageBooks.goTo') }}</v-btn>
           </v-card-actions>
         </v-flex>

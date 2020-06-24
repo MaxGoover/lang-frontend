@@ -9,7 +9,7 @@
         :key="part.id"
         xs12 sm10 offset-sm1>
         <book-part-list-item
-          :bookId="book.id"
+          :bookId="book._id"
           :part="part"
         />
       </v-flex>
@@ -28,11 +28,11 @@ export default {
     BookPartListItem
   },
   props: {
-    id: { type: String, required: true }
+    bookId: { type: String }
   },
   computed: {
     book () {
-      return this.$store.getters['books/books'].find(book => book.id === this.id)
+      return this.$store.getters['books/books'].find(book => book._id === this.bookId)
     }
   }
 }

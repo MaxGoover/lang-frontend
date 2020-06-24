@@ -22,6 +22,9 @@ export default {
   components: {
     AppFooter,
     AppHeader
+  },
+  created () {
+    this.$store.dispatch('books/getBooks')
   }
 }
 </script>

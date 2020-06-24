@@ -32,7 +32,7 @@
 
       <v-flex
         v-for="book in filteredBooks"
-        :key="book.id"
+        :key="book._id"
         offset-lg2
         xs12 sm12 lg8
       >
@@ -46,12 +46,10 @@
 <script>
 import { mapState } from 'vuex'
 
-const BooksListItem = () => import(/* webpackChunkName: "booksListItem" */ './BooksListItem')
-
 export default {
   name: 'BooksList',
   components: {
-    BooksListItem
+    BooksListItem: () => import(/* webpackChunkName: "booksListItem" */ './BooksListItem')
   },
   data () {
     return {

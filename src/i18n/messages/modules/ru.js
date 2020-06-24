@@ -1,12 +1,14 @@
 export default {
   appHeader: {
+    grammar: 'Грамматика',
     learnWords: 'Учить слова',
     login: 'Войти',
     logout: 'Выйти',
     main: 'Главная',
     myCabinet: 'Мой кабинет',
-    read: 'Читать',
-    signup: 'Зарегистрироваться'
+    reading: 'Чтение',
+    signup: 'Зарегистрироваться',
+    video: 'Видео'
   },
   app: {
     name: 'M-leef'

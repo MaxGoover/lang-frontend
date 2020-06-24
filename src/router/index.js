@@ -17,7 +17,7 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/books/book/:id',
+    path: '/books/book/:bookId',
     name: 'Book',
     props: true,
     component: () => import(/* webpackChunkName: "book" */ '../components/books/Book'),
@@ -31,6 +31,18 @@ const routes = [
     beforeEnter: authGuard
   },
   {
+    path: '/grammar',
+    name: 'Grammar',
+    component: () => import(/* webpackChunkName: "grammar" */ '../components/grammar/Grammar.vue'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/video',
+    name: 'Video',
+    component: () => import(/* webpackChunkName: "video" */ '../views/Video.vue'),
+    beforeEnter: authGuard
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "login" */ '../views/sign/Login.vue')
@@ -41,19 +53,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "signup" */ '../views/sign/Signup.vue')
   },
   {
-    path: '/profile',
-    name: 'Profile',
-    component: () => import(/* webpackChunkName: "profile" */ '../views/Profile.vue'),
-    beforeEnter: authGuard
-  },
-  {
     path: '*',
     name: 'Page404',
     component: () => import(/* webpackChunkName: "page404" */ '../components/errors/Page404.vue')
   }
 ]
 
-const isAuthorized = store.getters['authorization/isAuthorized']
 const router = new VueRouter({
   base: process.env.BASE_URL,
   mode: 'history',
@@ -62,6 +67,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // Если пользователь авторизован
+  const isAuthorized = store.getters['authorization/isAuthorized']
+
   // и путь на страницу авторизации или регистрации, то ошибка 404
   if (isAuthorized && (to.name === 'Login' || to.name === 'Signup')) {
     next({ name: 'Page404' })
@@ -73,7 +80,7 @@ router.beforeEach((to, from, next) => {
 })
 
 function authGuard (to, from, next) {
-  isAuthorized ? next() : next({ name: 'Login' })
+  store.getters['authorization/isAuthorized'] ? next() : next({ name: 'Login' })
 }
 
 export default router
