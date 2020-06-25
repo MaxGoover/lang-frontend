@@ -3,6 +3,7 @@ import books from './modules/books/books'
 import general from './modules/general/general'
 import menu from './modules/menu/menu'
 import user from './modules/user/user'
+import video from './modules/video/video'
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     books,
     general,
     menu,
-    user
+    user,
+    video
   }
 })

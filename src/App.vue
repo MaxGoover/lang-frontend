@@ -24,7 +24,7 @@ export default {
     AppHeader
   },
   created () {
-    this.$store.dispatch('books/getBooks')
+    // this.$store.dispatch('books/getBooks')
   }
 }
 </script>

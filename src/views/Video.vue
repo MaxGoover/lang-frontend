@@ -9,10 +9,12 @@
     </form>
 
     <v-form
-      @submit="convertVideos"
+      enctype="multipart/form-data"
+      @submit="uploadVideos"
     >
       <v-file-input
         v-model="videos"
+        accept="video/*"
         append-icon="mdi-eye"
         background-color="green"
         color="purple"
@@ -28,7 +30,7 @@
         block
         color="primary"
         type="submit"
-        @click.prevent="convertVideos"
+        @click.prevent="uploadVideos"
       >
         Подтвердить
       </v-btn>
@@ -46,7 +48,9 @@ export default {
     }
   },
   methods: {
-    convertVideos () {}
+    uploadVideos () {
+      this.$store.dispatch('video/uploadFile', this.videos)
+    }
   }
 }
 </script>
