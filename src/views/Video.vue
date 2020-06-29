@@ -3,15 +3,12 @@
     <h1>Video</h1>
     <input type="file" accept="image/*" multiple>
 
-    <form method="post" enctype="multipart/form-data" name="form">
-      <input type="file" name="media-vid"  class=" file_multi_video" accept="video/*">
-      <input type="submit" name="submit" value="upload"/>
-    </form>
+<!--    <form method="post" enctype="multipart/form-data" name="form">-->
+<!--      <input type="file" name="media-vid"  class=" file_multi_video" accept="video/*">-->
+<!--      <input type="submit" name="submit" value="upload"/>-->
+<!--    </form>-->
 
-    <v-form
-      enctype="multipart/form-data"
-      @submit="uploadVideos"
-    >
+    <v-form @submit.prevent="uploadVideos">
       <v-file-input
         v-model="videos"
         accept="video/*"
@@ -30,7 +27,6 @@
         block
         color="primary"
         type="submit"
-        @click.prevent="uploadVideos"
       >
         Подтвердить
       </v-btn>

@@ -1,4 +1,4 @@
-// import { axios } from '../../../axios'
+import { axios } from '../../../axios'
 import Params from '../../../params'
 
 export default {
@@ -24,6 +24,18 @@ export default {
       if (invalidFileSize || filesSize > Params.maxFilesSize) {
         return false
       }
+
+      this.dispatch('general/startLoading')
+      axios.post('video/video/convert', formData)
+        .then(
+          response => {
+            console.log(1, response)
+          },
+          reject => {
+            console.log(2, reject.response)
+          })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
 
       // try {
       //   const { data } = Axios.post('record/record/upload-audio', formData)
