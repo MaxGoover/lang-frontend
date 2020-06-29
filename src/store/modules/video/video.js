@@ -36,39 +36,6 @@ export default {
           })
         .catch(error => { console.log(3, error) })
         .finally(() => { this.dispatch('general/stopLoading') })
-
-      // try {
-      //   const { data } = Axios.post('record/record/upload-audio', formData)
-      //   this.$emit('onLoading', false)
-      //
-      //   if (data.hasErrors) {
-      //     if (data.isValidationError) {
-      //       this.errors = data.validationError
-      //     } else {
-      //       data.errors.map(error => {
-      //         this.$notify({
-      //           group: 'main',
-      //           type: 'error',
-      //           title: this.$t('status.error'),
-      //           text: error.message
-      //         })
-      //       })
-      //     }
-      //     return Promise.reject(data)
-      //   } else {
-      //     this.$notify({
-      //       group: 'main',
-      //       type: 'success',
-      //       title: this.$t('status.success'),
-      //       text: this.$t('record.successUploadAudio')
-      //     })
-      //
-      //     return data
-      //   }
-      // } catch (e) {
-      //   this.$emit('onLoading', false)
-      //   return Promise.reject(e)
-      // }
     }
   }
 }

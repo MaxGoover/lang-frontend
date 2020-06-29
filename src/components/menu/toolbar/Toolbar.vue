@@ -47,6 +47,11 @@ export default {
           title: this.$i18n.t('appHeader.video')
         },
         {
+          icon: 'mdi-account-edit',
+          route: '/grammar',
+          title: this.$i18n.t('appHeader.grammar')
+        },
+        {
           icon: 'mdi-logout',
           route: '/logout',
           title: this.$i18n.t('appHeader.logout')

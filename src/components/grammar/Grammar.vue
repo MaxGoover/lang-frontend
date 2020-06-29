@@ -2,9 +2,10 @@
   <v-container grid-list-md>
     <v-layout row wrap>
       <v-flex
-        offset-lg2
-        xs12 sm12 lg8
+        offset-md2
+        xs12 sm12 md10
       >
+        <h1>Грамматические тренировки</h1>
         <v-container fluid>
           <v-layout row>
 
@@ -18,13 +19,13 @@
       </v-flex>
 
       <v-flex
-        offset-sm1 offset-lg2
-        xs12 sm10 lg8
+        offset-sm2
+        xs12 sm10
       >
         <!--Карточка уровня-->
-        <grammar-level/>
-
+        <grammar-level-list/>
       </v-flex>
+
     </v-layout>
   </v-container>
 </template>
@@ -33,7 +34,7 @@
 export default {
   name: 'Grammar',
   components: {
-    GrammarLevel: () => import(/* webpackChunkName: "booksList" */ './GrammarLevel')
+    GrammarLevelList: () => import('./GrammarLevelList')
   }
 }
 </script>

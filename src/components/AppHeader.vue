@@ -107,6 +107,12 @@ export default {
           event: this.blank
         },
         {
+          icon: 'mdi-account-edit',
+          route: { name: 'Grammar' },
+          title: this.$i18n.t('appHeader.grammar'),
+          event: this.blank
+        },
+        {
           icon: 'mdi-logout',
           title: this.$i18n.t('appHeader.logout'),
           event: this.showDimmer
