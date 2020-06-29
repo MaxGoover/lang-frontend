@@ -100,12 +100,12 @@ export default {
           title: this.$i18n.t('appHeader.reading'),
           event: this.blank
         },
-        {
-          icon: 'mdi-eye',
-          route: { name: 'Video' },
-          title: this.$i18n.t('appHeader.video'),
-          event: this.blank
-        },
+        // {
+        //   icon: 'mdi-eye',
+        //   route: { name: 'Video' },
+        //   title: this.$i18n.t('appHeader.video'),
+        //   event: this.blank
+        // },
         {
           icon: 'mdi-account-edit',
           route: { name: 'Grammar' },

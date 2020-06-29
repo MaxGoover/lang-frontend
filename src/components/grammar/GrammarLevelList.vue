@@ -6,6 +6,7 @@
         :key="i"
         :avatar="level.avatar"
         :title="level.title"
+        :subtitle="level.subtitle"
       />
     </v-row>
   </v-container>
@@ -22,19 +23,23 @@ export default {
       levels: [
         {
           avatar: 'PS',
-          title: 'Present Simple'
+          title: 'Present Simple - Active Voice',
+          subtitle: 'Простое настоящее'
         },
         {
           avatar: 'PS',
-          title: 'Past Simple'
+          title: 'Past Simple - Active Voice',
+          subtitle: 'Простое прошедшее'
         },
         {
           avatar: 'FS',
-          title: 'Future Simple'
+          title: 'Future Simple - Active Voice',
+          subtitle: 'Простое будущее'
         },
         {
           avatar: 'N',
-          title: 'Numerals'
+          title: 'Numerals',
+          subtitle: 'Числительные'
         }
       ]
     }

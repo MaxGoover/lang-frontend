@@ -34,11 +34,11 @@ export default {
           route: '/books',
           title: this.$i18n.t('appHeader.reading')
         },
-        {
-          icon: 'mdi-ab-testing',
-          route: '/video',
-          title: this.$i18n.t('appHeader.video')
-        },
+        // {
+        //   icon: 'mdi-ab-testing',
+        //   route: '/video',
+        //   title: this.$i18n.t('appHeader.video')
+        // },
         {
           icon: 'mdi-account-edit',
           route: '/grammar',

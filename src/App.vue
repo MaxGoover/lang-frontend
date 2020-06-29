@@ -1,9 +1,9 @@
 <template>
   <v-app>
-
-    <!--Тулбар-->
+    <!--Хеадер-->
     <app-header/>
 
+    <!--Контент-->
     <v-content>
       <router-view/>
     </v-content>
@@ -14,14 +14,14 @@
 </template>
 
 <script>
-const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/AppFooter')
 const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/AppHeader')
+const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/AppFooter')
 
 export default {
   name: 'App',
   components: {
-    AppFooter,
-    AppHeader
+    AppHeader,
+    AppFooter
   },
   created () {
     this.$store.dispatch('books/getBooks')
