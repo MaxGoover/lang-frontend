@@ -12,7 +12,7 @@
         <h3 class="ml-4">BEGINNER</h3>
 
         <!--Карточка уровня-->
-        <grammar-level-list/>
+        <grammar-trainings-list/>
       </v-flex>
 
     </v-layout>
@@ -23,7 +23,7 @@
 export default {
   name: 'Grammar',
   components: {
-    GrammarLevelList: () => import('./GrammarLevelList')
+    GrammarTrainingsList: () => import('./GrammarTrainingsList')
   }
 }
 </script>
