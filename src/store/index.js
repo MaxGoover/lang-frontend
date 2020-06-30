@@ -1,6 +1,7 @@
 import authorization from './modules/auth/authorization'
 import books from './modules/books/books'
 import general from './modules/general/general'
+import grammar from './modules/grammar/grammar'
 import menu from './modules/menu/menu'
 import training from './modules/training/training'
 import user from './modules/user/user'
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     authorization,
     books,
     general,
+    grammar,
     menu,
     training,
     user,

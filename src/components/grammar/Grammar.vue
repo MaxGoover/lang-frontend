@@ -22,13 +22,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   name: 'Grammar',
   components: {
     GrammarLevel: () => import('./GrammarLevel')
   },
+  computed: {
+    ...mapState('grammar', ['levels'])
+  },
   created () {
-    this.$store.dispatch('')
+    this.$store.dispatch('grammar/getLevels')
   }
 }
 </script>
