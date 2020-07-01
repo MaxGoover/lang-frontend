@@ -11,15 +11,13 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'GrammarTrainingsList',
   components: {
     GrammarTrainingsListItem: () => import('./GrammarTrainingsListItem')
   },
-  computed: {
-    ...mapState('training', ['trainings'])
+  props: {
+    trainings: { type: Array }
   }
 }
 </script>

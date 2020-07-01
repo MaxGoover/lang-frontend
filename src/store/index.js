@@ -3,7 +3,6 @@ import books from './modules/books/books'
 import general from './modules/general/general'
 import grammar from './modules/grammar/grammar'
 import menu from './modules/menu/menu'
-import training from './modules/training/training'
 import user from './modules/user/user'
 import video from './modules/video/video'
 import Vue from 'vue'
@@ -19,7 +18,6 @@ export default new Vuex.Store({
     general,
     grammar,
     menu,
-    training,
     user,
     video
   }

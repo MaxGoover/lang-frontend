@@ -31,7 +31,7 @@ export default {
   data: function () {
     return {
       params: {
-        trainingAlias: this.training.alias,
+        alias: this.training.alias,
         training: this.training
       }
     }

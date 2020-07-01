@@ -37,7 +37,7 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/grammar/:trainingAlias',
+    path: '/grammar/:alias',
     name: 'GrammarTraining',
     component: () => import('../components/grammar/GrammarTraining.vue'),
     beforeEnter: authGuard

@@ -1,10 +1,10 @@
 <template>
   <div>
     <!--Уровень-->
-    <h3 class="ml-4">{{ level.title.toUpperCase() }}</h3>
+    <h3 class="ml-4">{{ (JSON.parse(level.level)).title }}</h3>
 
     <!--Список тренировок-->
-    <grammar-trainings-list :levelId="level.id"/>
+    <grammar-trainings-list :trainings="JSON.parse(level.trainings)"/>
   </div>
 </template>
 
