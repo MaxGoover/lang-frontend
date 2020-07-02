@@ -27,7 +27,7 @@
     <!--Верхнее меню-->
     <v-card>
       <v-toolbar
-        class="primary"
+        class="red"
         dark
       >
         <v-app-bar-nav-icon

@@ -3,21 +3,22 @@ import { axios } from '../../../axios'
 export default {
   namespaced: true,
   state: {
-    levels: []
+    exercises: []
   },
   getters: {},
   mutations: {
-    setLevels (state, payload) {
-      state.levels = payload
+    setExercises (state, payload) {
+      state.sentences = payload
     }
   },
   actions: {
-    getLevels ({ commit }) {
+    getExercises ({ commit }, payload) {
       this.dispatch('general/startLoading')
-      axios.post('grammar/level/index')
+      axios.post('grammar/training/index', payload)
         .then(
           response => {
-            commit('setLevels', response.data)
+            console.log(1, response.data)
+            commit('setExercises', response.data)
           },
           reject => { console.log(2, reject.response) })
         .catch(error => { console.log(3, error) })
