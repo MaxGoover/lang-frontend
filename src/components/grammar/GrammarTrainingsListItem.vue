@@ -25,9 +25,7 @@
 <script>
 export default {
   name: 'GrammarTrainingsListItem',
-  props: {
-    training: { type: Object }
-  }
+  props: { training: { type: Object } }
 }
 </script>
 

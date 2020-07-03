@@ -14,9 +14,7 @@ export default {
   components: {
     GrammarTrainingsList: () => import('./GrammarTrainingsList')
   },
-  props: {
-    level: { type: Object }
-  }
+  props: { level: { type: Object } }
 }
 </script>
 

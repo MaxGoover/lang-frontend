@@ -16,9 +16,7 @@ export default {
   components: {
     GrammarTrainingsListItem: () => import('./GrammarTrainingsListItem')
   },
-  props: {
-    trainings: { type: Array }
-  }
+  props: { trainings: { type: Array } }
 }
 </script>
 
