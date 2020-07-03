@@ -19,11 +19,6 @@
             @confirmForm="confirmForm"
           />
         </v-card-text>
-        <v-divider light></v-divider>
-
-        <!--Загрузка-->
-        <v-progress-linear v-if="loading" :indeterminate="true"/>
-
       </v-card>
     </v-flex>
   </v-layout>
@@ -45,8 +40,7 @@ export default {
     formTitle: { type: String }
   },
   computed: {
-    ...mapState('authorization', ['isAuthorized']),
-    ...mapState('general', ['loading'])
+    ...mapState('authorization', ['isAuthorized'])
   },
   watch: {
     isAuthorized (value) {

@@ -64,6 +64,9 @@
       </v-toolbar>
     </v-card>
 
+    <!--Загрузка-->
+    <v-progress-linear v-if="loading" :indeterminate="true"/>
+
     <!--Диалоговое окно-->
     <v-dialog v-model="dialog" persistent max-width="500">
       <v-card>
@@ -92,6 +95,7 @@ export default {
   },
   computed: {
     ...mapState('authorization', ['isAuthorized']),
+    ...mapState('general', ['loading']),
     menuItems () {
       return this.isAuthorized ? [
         {
