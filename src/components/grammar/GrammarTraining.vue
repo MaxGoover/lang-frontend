@@ -1,17 +1,15 @@
 <template>
   <div>
-    <v-row justify="space-around">
-      <v-icon @click="model--">mdi-minus</v-icon>
-      {{ model }}
-      <v-icon @click="model++">mdi-plus</v-icon>
-    </v-row>
+    <!--Хлебные крошки-->
+    <app-bread-crumbs :breadCrumbs="breadCrumbs"/>
+
     <v-carousel v-model="model">
       <v-carousel-item
         v-for="(color, i) in colors"
         :key="color"
       >
         <v-sheet
-          :color="color"
+          color="primary"
           height="100%"
           tile
         >
@@ -29,15 +27,24 @@
 </template>
 
 <script>
+import { i18n } from '../../i18n'
 import { mapState } from 'vuex'
+import BreadCrumb from '../../entities/breadCrumb'
 
 export default {
   name: 'GrammarTraining',
+  components: {
+    AppBreadCrumbs: () => import('../../components/AppBreadCrumbs')
+  },
   props: {
     alias: { type: String }
   },
   data () {
     return {
+      breadCrumbs: [
+        new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
+        new BreadCrumb(i18n.t('appHeader.grammar'), { name: 'Grammar' })
+      ],
       colors: [
         'primary',
         'secondary',

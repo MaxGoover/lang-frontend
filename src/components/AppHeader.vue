@@ -27,18 +27,15 @@
     <!--Верхнее меню-->
     <v-card>
       <v-toolbar
-        class="red"
+        class="primary"
         dark
       >
         <v-app-bar-nav-icon
           class="hidden-sm-and-up"
           @click.stop="toggleDrawer = !toggleDrawer"
-        ></v-app-bar-nav-icon>
+        />
 
-        <v-btn
-          text
-          :to="{ name: 'Main' }"
-        >
+        <v-btn text :to="{ name: 'Main' }">
           <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
         </v-btn>
 

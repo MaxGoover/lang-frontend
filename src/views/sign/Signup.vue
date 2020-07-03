@@ -25,12 +25,14 @@ export default {
     AppBreadCrumbs,
     Sign
   },
-  data: () => ({
-    breadCrumbs: [
-      new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-      new BreadCrumb(i18n.t('pageSign.registration'), { name: 'Signup' })
-    ]
-  }),
+  data () {
+    return {
+      breadCrumbs: [
+        new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
+        new BreadCrumb(i18n.t('pageSign.registration'), { name: 'Signup' })
+      ]
+    }
+  },
   methods: {
     signUp (value) {
       this.$store.dispatch('authorization/signup', value)

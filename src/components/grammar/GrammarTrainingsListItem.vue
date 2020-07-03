@@ -2,7 +2,7 @@
   <v-col md="6">
     <v-card
       :elevation="$vuetify.breakpoint.smAndDown ? 0 : 4"
-      :to="{ name: 'GrammarTraining', params: params }"
+      :to="{ name: 'GrammarTraining', params: { alias: training.alias } }"
     >
       <v-list-item two-line>
         <!--Аватарка-->
@@ -15,7 +15,7 @@
         <!--Описание-->
         <v-list-item-content>
           <v-list-item-title class="headline mb-1">{{ training.title }}</v-list-item-title>
-          <v-list-item-subtitle>{{ training.subtitle }}</v-list-item-subtitle>
+          <v-list-item-subtitle>{{ training.translation }}</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-card>
@@ -27,13 +27,6 @@ export default {
   name: 'GrammarTrainingsListItem',
   props: {
     training: { type: Object }
-  },
-  data: function () {
-    return {
-      params: {
-        alias: this.training.alias
-      }
-    }
   }
 }
 </script>
