@@ -20,7 +20,7 @@ export default {
   name: 'Login',
   components: {
     AppBreadCrumbs: () => import('../components/app/AppBreadCrumbs'),
-    Sign: () => import('./components/Sign')
+    Sign: () => import('../components/sign/Sign')
   },
   data () {
     return {

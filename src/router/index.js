@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Main',
-    component: () => import(/* webpackChunkName: "main" */ '../components/main/Main.vue')
+    component: () => import(/* webpackChunkName: "main" */ '../views/Main.vue')
   },
   {
     path: '/books',
@@ -33,7 +33,7 @@ const routes = [
   {
     path: '/grammar',
     name: 'Grammar',
-    component: () => import(/* webpackChunkName: "grammar" */ '../components/grammar/Grammar.vue'),
+    component: () => import(/* webpackChunkName: "grammar" */ '../views/Grammar.vue'),
     beforeEnter: authGuard
   },
   {

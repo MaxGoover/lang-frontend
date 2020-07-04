@@ -17,7 +17,7 @@ import { i18n } from '../i18n'
 import BreadCrumb from '../entities/breadCrumb'
 
 const AppBreadCrumbs = () => import('../components/app/AppBreadCrumbs')
-const Sign = () => import('./components/Sign')
+const Sign = () => import('../components/sign/Sign')
 
 export default {
   name: 'Signup',
