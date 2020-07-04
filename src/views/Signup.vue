@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import { i18n } from '../../i18n'
-import BreadCrumb from '../../entities/breadCrumb'
+import { i18n } from '../i18n'
+import BreadCrumb from '../entities/breadCrumb'
 
-const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
+const AppBreadCrumbs = () => import('../components/app/AppBreadCrumbs')
 const Sign = () => import('./components/Sign')
 
 export default {

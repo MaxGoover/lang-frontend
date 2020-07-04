@@ -14,8 +14,8 @@
 </template>
 
 <script>
-const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/AppHeader')
-const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/AppFooter')
+const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/app/AppHeader')
+const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/app/AppFooter')
 
 export default {
   name: 'App',

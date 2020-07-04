@@ -34,7 +34,7 @@ import BreadCrumb from '../../entities/breadCrumb'
 export default {
   name: 'GrammarTraining',
   components: {
-    AppBreadCrumbs: () => import('../../components/AppBreadCrumbs')
+    AppBreadCrumbs: () => import('../app/AppBreadCrumbs')
   },
   props: {
     alias: { type: String },

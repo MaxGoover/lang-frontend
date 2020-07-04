@@ -56,7 +56,7 @@
 import { mapState } from 'vuex'
 import { maxLength, minLength, required } from 'vuelidate/lib/validators'
 import { validationMixin } from 'vuelidate'
-import Params from '../../../params'
+import Params from '../../params'
 
 export default {
   name: 'SignForm',

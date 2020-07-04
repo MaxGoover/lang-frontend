@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import { i18n } from '../../i18n'
-import BreadCrumb from '../../entities/breadCrumb'
+import { i18n } from '../i18n'
+import BreadCrumb from '../entities/breadCrumb'
 
 export default {
   name: 'Login',
   components: {
-    AppBreadCrumbs: () => import('../../components/AppBreadCrumbs'),
+    AppBreadCrumbs: () => import('../components/app/AppBreadCrumbs'),
     Sign: () => import('./components/Sign')
   },
   data () {
