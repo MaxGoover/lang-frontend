@@ -5,8 +5,8 @@
 
     <v-carousel v-model="model">
       <v-carousel-item
-        v-for="(color, i) in colors"
-        :key="color"
+        v-for="(exercise, i) in exercises"
+        :key="i"
       >
         <v-sheet
           color="primary"
@@ -18,7 +18,7 @@
             align="center"
             justify="center"
           >
-            <div class="display-3">Slide {{ i + 1 }}</div>
+            <div class="display-3"><pre>{{ exercise.sentence }}</pre></div>
           </v-row>
         </v-sheet>
       </v-carousel-item>
@@ -37,13 +37,15 @@ export default {
     AppBreadCrumbs: () => import('../../components/AppBreadCrumbs')
   },
   props: {
-    alias: { type: String }
+    alias: { type: String },
+    training: { type: Object }
   },
   data () {
     return {
       breadCrumbs: [
         new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-        new BreadCrumb(i18n.t('appHeader.grammar'), { name: 'Grammar' })
+        new BreadCrumb(i18n.t('appHeader.grammar'), { name: 'Grammar' }),
+        new BreadCrumb(this.training.title, { name: 'GrammarTraining' })
       ],
       colors: [
         'primary',
@@ -59,7 +61,10 @@ export default {
     ...mapState('training', ['exercises'])
   },
   created () {
-    this.$store.dispatch('training/getExercises', this.alias)
+    this.$store.dispatch('training/getExercises', {
+      tense_id: 1,
+      voice: 1
+    })
   }
 }
 </script>

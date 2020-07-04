@@ -17,6 +17,7 @@ export default {
       axios.post('grammar/level/index')
         .then(
           response => {
+            console.log(1, response.data)
             commit('setLevels', response.data)
           },
           reject => { console.log(2, reject.response) })
