@@ -61,7 +61,7 @@
       </v-toolbar>
     </v-card>
 
-    <!--Загрузка-->
+    <!--Линия загрузки-->
     <v-progress-linear v-if="loading" :indeterminate="true"/>
 
     <!--Диалоговое окно-->
@@ -136,16 +136,12 @@ export default {
   },
   methods: {
     blank () {},
-    hideDimmer () {
-      this.dialog = false
-    },
+    hideDimmer () { this.dialog = false },
     logout () {
       this.$store.dispatch('authorization/logout')
         .then(() => { this.hideDimmer() })
     },
-    showDimmer () {
-      this.dialog = true
-    }
+    showDimmer () { this.dialog = true }
   }
 }
 </script>

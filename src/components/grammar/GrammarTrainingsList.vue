@@ -1,6 +1,7 @@
 <template>
   <v-container grid-list-md>
     <v-row>
+      <!--Список тренировок-->
       <grammar-trainings-list-item
         v-for="(training, i) in trainings"
         :key="i"

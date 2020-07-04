@@ -1,9 +1,13 @@
 <template>
   <v-container grid-list-md v-if="bookPart">
     <v-layout row wrap>
+
+      <!--Текст части книги-->
       <v-flex xs12 sm10 offset-sm1>
         <book-part-content :partId="partId" />
       </v-flex>
+
+      <!--Слова с переводом-->
       <v-flex xs12 sm10 offset-sm1>
         <book-part-words/>
       </v-flex>
@@ -17,8 +21,8 @@ import { mapState } from 'vuex'
 export default {
   name: 'BookPart',
   components: {
-    BookPartContent: () => import(/* webpackChunkName: "bookPartContent" */ './BookPartContent'),
-    BookPartWords: () => import(/* webpackChunkName: "bookPartWords" */ './BookPartWords')
+    BookPartContent: () => import('./BookPartContent'),
+    BookPartWords: () => import('./BookPartWords')
   },
   props: {
     bookId: { type: String },
@@ -33,7 +37,6 @@ export default {
     })
   }
 }
-
 </script>
 
 <style scoped>

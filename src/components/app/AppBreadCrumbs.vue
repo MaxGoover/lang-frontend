@@ -9,9 +9,7 @@
 <script>
 export default {
   name: 'AppBreadCrumbs',
-  props: {
-    breadCrumbs: { type: Array }
-  }
+  props: { breadCrumbs: { type: Array } }
 }
 </script>
 

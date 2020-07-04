@@ -16,10 +16,7 @@ export default {
       this.dispatch('general/startLoading')
       axios.post('grammar/level/index')
         .then(
-          response => {
-            console.log(1, response.data)
-            commit('setLevels', response.data)
-          },
+          response => { commit('setLevels', response.data) },
           reject => { console.log(2, reject.response) })
         .catch(error => { console.log(3, error) })
         .finally(() => { this.dispatch('general/stopLoading') })

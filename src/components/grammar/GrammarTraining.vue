@@ -3,6 +3,7 @@
     <!--Хлебные крошки-->
     <app-bread-crumbs :breadCrumbs="breadCrumbs"/>
 
+    <!--Упражнения-->
     <v-carousel v-model="model">
       <v-carousel-item
         v-for="(exercise, i) in exercises"

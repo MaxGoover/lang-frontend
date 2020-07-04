@@ -4,6 +4,8 @@
       <v-flex xs12 sm10 offset-sm1>
         <book-details :book="book"/>
       </v-flex>
+
+      <!--Части книги-->
       <v-flex
         v-for="part in book.parts"
         :key="part.id"
@@ -18,18 +20,13 @@
 </template>
 
 <script>
-const BookDetails = () => import(/* webpackChunkName: "bookDetails" */ './BookDetails')
-const BookPartListItem = () => import(/* webpackChunkName: "bookPartListItem" */ './BookPartListItem')
-
 export default {
   name: 'Book',
   components: {
-    BookDetails,
-    BookPartListItem
+    BookDetails: () => import('./BookDetails'),
+    BookPartListItem: () => import('./BookPartListItem')
   },
-  props: {
-    bookId: { type: String }
-  },
+  props: { bookId: { type: String } },
   computed: {
     book () {
       return this.$store.getters['books/books'].find(book => book._id === this.bookId)

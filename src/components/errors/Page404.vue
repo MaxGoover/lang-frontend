@@ -14,7 +14,7 @@
           text
           :to="{ name: 'Main' }"
         >
-          ⟵ {{ $t('menu.main') }}
+          {{ $t('menu.main') }}
         </v-btn>
 
         <br/>
