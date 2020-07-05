@@ -14,14 +14,11 @@
 </template>
 
 <script>
-const AppHeader = () => import(/* webpackChunkName: "appHeader" */ './components/app/AppHeader')
-const AppFooter = () => import(/* webpackChunkName: "appFooter" */ './components/app/AppFooter')
-
 export default {
   name: 'App',
   components: {
-    AppHeader,
-    AppFooter
+    AppHeader: () => import('./components/app/AppHeader'),
+    AppFooter: () => import('./components/app/AppFooter')
   },
   created () {
     this.$store.dispatch('books/getBooks')

@@ -38,8 +38,9 @@
         <v-btn text :to="{ name: 'Main' }">
           <v-toolbar-title>{{ $t('app.name') }}</v-toolbar-title>
         </v-btn>
-
         <v-spacer/>
+
+        <!--Кнопки меню-->
         <v-toolbar-items
           class="hidden-xs-only"
         >
@@ -50,10 +51,7 @@
             :to="item.route"
             @click="item.event"
           >
-            <v-icon
-              left
-              v-html="item.icon"
-            />
+            <v-icon left v-html="item.icon"/>
             {{ item.title }}
           </v-btn>
         </v-toolbar-items>
@@ -65,83 +63,60 @@
     <v-progress-linear v-if="loading" :indeterminate="true"/>
 
     <!--Диалоговое окно-->
-    <v-dialog v-model="dialog" persistent max-width="500">
-      <v-card>
-        <v-card-title class="headline justify-center">{{ $t('dimmer.askConfirmLogout') }}</v-card-title>
-        <v-card-text></v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="logout">{{ $t('common.yes') }}</v-btn>
-          <v-btn color="green darken-1" text @click="hideDimmer">{{ $t('common.no') }}</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <dialog-window/>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
+import DialogWindow from '../../components/menu/DialogWindow'
+import MenuItem from '../../entities/MenuItem'
 
 export default {
   name: 'AppHeader',
-  data () {
-    return {
-      dialog: false,
-      toggleDrawer: false
-    }
+  components: {
+    DialogWindow
   },
+  data () { return { toggleDrawer: false } },
   computed: {
     ...mapState('authorization', ['isAuthorized']),
     ...mapState('general', ['loading']),
     menuItems () {
       return this.isAuthorized ? [
-        {
-          icon: 'mdi-eye',
-          route: { name: 'Books' },
-          title: this.$i18n.t('appHeader.reading'),
-          event: this.blank
-        },
-        // {
-        //   icon: 'mdi-eye',
-        //   route: { name: 'Video' },
-        //   title: this.$i18n.t('appHeader.video'),
-        //   event: this.blank
-        // },
-        {
-          icon: 'mdi-account-edit',
-          route: { name: 'Grammar' },
-          title: this.$i18n.t('appHeader.grammar'),
-          event: this.blank
-        },
-        {
-          icon: 'mdi-logout',
-          title: this.$i18n.t('appHeader.logout'),
-          event: this.showDimmer
-        }
+        new MenuItem(
+          'mdi-eye',
+          this.$i18n.t('appHeader.video'),
+          { name: 'Video' }
+        ),
+        new MenuItem(
+          'mdi-account-edit',
+          this.$i18n.t('appHeader.grammar'),
+          { name: 'Grammar' }
+        ),
+        new MenuItem(
+          'mdi-logout',
+          this.$i18n.t('appHeader.logout'),
+          null,
+          this.showDialog
+        )
       ] : [
-        {
-          icon: 'mdi-login',
-          route: { name: 'Login' },
-          title: this.$i18n.t('appHeader.login'),
-          event: this.blank
-        },
-        {
-          icon: 'mdi-lock-open',
-          route: { name: 'Signup' },
-          title: this.$i18n.t('appHeader.signup'),
-          event: this.blank
-        }
+        new MenuItem(
+          'mdi-login',
+          this.$i18n.t('appHeader.login'),
+          { name: 'Login' }
+        ),
+        new MenuItem(
+          'mdi-lock-open',
+          this.$i18n.t('appHeader.signup'),
+          { name: 'Signup' }
+        )
       ]
     }
   },
   methods: {
-    blank () {},
-    hideDimmer () { this.dialog = false },
-    logout () {
-      this.$store.dispatch('authorization/logout')
-        .then(() => { this.hideDimmer() })
-    },
-    showDimmer () { this.dialog = true }
+    showDialog () {
+      this.$store.dispatch('menu/setShowDialog', true)
+    }
   }
 }
 </script>

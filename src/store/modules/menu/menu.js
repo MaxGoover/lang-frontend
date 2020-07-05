@@ -3,29 +3,24 @@
 export default {
   namespaced: true,
   state: {
-    loading: false,
+    showDialog: false,
     showDrawer: false
   },
   getters: {
-    loading (state) {
-      return state.loading
-    },
-    showDrawer (state) {
-      return state.showDrawer
-    }
+    showDialog: state => state.showDialog
   },
   mutations: {
+    setShowDialog (state, payload) {
+      state.showDialog = payload
+    },
     setShowDrawer (state) {
       state.showDrawer = !state.showDrawer
-    },
-    startLoading (state) {
-      state.loading = true
-    },
-    stopLoading (state) {
-      state.loading = true
     }
   },
   actions: {
+    setShowDialog ({ commit }, payload) {
+      commit('setShowDialog', payload)
+    },
     setShowDrawer ({ commit }) {
       commit('setShowDrawer')
     }

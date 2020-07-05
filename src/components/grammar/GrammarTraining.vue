@@ -30,7 +30,7 @@
 <script>
 import { i18n } from '../../i18n'
 import { mapState } from 'vuex'
-import BreadCrumb from '../../entities/breadCrumb'
+import BreadCrumb from '../../entities/BreadCrumb'
 
 export default {
   name: 'GrammarTraining',
