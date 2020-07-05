@@ -10,7 +10,7 @@ export default {
     /**
      * Загрузка файлов на сервер.
      */
-    uploadFile ({ commit }, payload) {
+    uploadFiles ({ commit }, payload) {
       const formData = new FormData()
       let filesSize = 0
       let invalidFileSize = false
@@ -26,14 +26,10 @@ export default {
       }
 
       this.dispatch('general/startLoading')
-      axios.post('video/video/convert', formData)
+      axios.post('grammar/video/convert', formData)
         .then(
-          response => {
-            console.log(1, response)
-          },
-          reject => {
-            console.log(2, reject.response)
-          })
+          response => { console.log(1, response) },
+          reject => { console.log(2, reject.response) })
         .catch(error => { console.log(3, error) })
         .finally(() => { this.dispatch('general/stopLoading') })
     }
