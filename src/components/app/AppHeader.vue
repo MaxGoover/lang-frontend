@@ -85,6 +85,11 @@ export default {
       return this.isAuthorized ? [
         new MenuItem(
           'mdi-eye',
+          this.$i18n.t('appHeader.reading'),
+          { name: 'Reading' }
+        ),
+        new MenuItem(
+          'mdi-eye',
           this.$i18n.t('appHeader.video'),
           { name: 'Video' }
         ),
@@ -115,7 +120,7 @@ export default {
   },
   methods: {
     showDialog () {
-      this.$store.dispatch('menu/setShowDialog', true)
+      this.$store.commit('menu/setShowDialog', true)
     }
   }
 }

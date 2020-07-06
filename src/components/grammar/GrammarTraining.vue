@@ -1,75 +1,48 @@
 <template>
-  <div>
-    <!--Хлебные крошки-->
-    <app-bread-crumbs :breadCrumbs="breadCrumbs"/>
-
-    <!--Упражнения-->
-    <v-carousel v-model="model">
+  <v-card>
+    <v-carousel :show-arrows="false">
       <v-carousel-item
         v-for="(exercise, i) in exercises"
         :key="i"
       >
-        <v-sheet
-          color="primary"
-          height="100%"
-          tile
-        >
+        <v-sheet color="primary">
           <v-row
-            class="fill-height"
-            align="center"
+            class="pt-5"
+            align="start"
             justify="center"
           >
-            <div class="display-3"><pre>{{ exercise.sentence }}</pre></div>
+            <v-container fluid>
+              <div class="display-1">{{ exercise.sentence }}</div>
+            </v-container>
           </v-row>
         </v-sheet>
       </v-carousel-item>
     </v-carousel>
-  </div>
+  </v-card>
 </template>
 
 <script>
-import { i18n } from '../../i18n'
 import { mapState } from 'vuex'
-import BreadCrumb from '../../entities/BreadCrumb'
 
 export default {
   name: 'GrammarTraining',
-  components: {
-    AppBreadCrumbs: () => import('../app/AppBreadCrumbs')
-  },
-  props: {
-    alias: { type: String },
-    training: { type: Object }
-  },
-  data () {
-    return {
-      breadCrumbs: [
-        new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-        new BreadCrumb(i18n.t('appHeader.grammar'), { name: 'Grammar' }),
-        new BreadCrumb(this.training.title, { name: 'GrammarTraining' })
-      ],
-      colors: [
-        'primary',
-        'secondary',
-        'yellow darken-2',
-        'red',
-        'orange'
-      ],
-      model: 0
-    }
-  },
+  props: { alias: { type: String } },
   computed: {
-    ...mapState('training', ['exercises'])
+    ...mapState('training', [
+      'exercises',
+      'training'
+    ])
   },
   created () {
-    this.$store.dispatch('training/getExercises', {
-      tense_id: 1,
-      voice: 1
-    })
+    // this.$store.commit('menu/setShowAppHeader', false)
+    // this.$store.commit('menu/setShowAppFooter', false)
+    this.$store.dispatch('training/getExercises', this.alias)
   }
 }
 </script>
 
 <style scoped>
-
+  .v-carousel, .v-responsive, .v-sheet {
+    height: 100% !important;
+  }
 </style>

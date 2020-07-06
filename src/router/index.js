@@ -8,32 +8,32 @@ const routes = [
   {
     path: '/',
     name: 'Main',
-    component: () => import(/* webpackChunkName: "main" */ '../views/Main.vue')
+    component: () => import('../views/Main.vue')
   },
   {
-    path: '/books',
-    name: 'Books',
-    component: () => import(/* webpackChunkName: "books" */ '../views/Books.vue'),
+    path: '/reading',
+    name: 'Reading',
+    component: () => import('../views/Books.vue'),
     beforeEnter: authGuard
   },
   {
-    path: '/books/book/:bookId',
+    path: '/reading/book/:bookId',
     name: 'Book',
     props: true,
-    component: () => import(/* webpackChunkName: "book" */ '../components/books/Book'),
+    component: () => import('../components/books/Book'),
     beforeEnter: authGuard
   },
   {
     path: '/books/book/:bookId/part/:partId',
     name: 'BookPart',
     props: true,
-    component: () => import(/* webpackChunkName: "bookPart" */ '../components/books/BookPart'),
+    component: () => import('../components/books/BookPart'),
     beforeEnter: authGuard
   },
   {
     path: '/grammar',
     name: 'Grammar',
-    component: () => import(/* webpackChunkName: "grammar" */ '../views/Grammar.vue'),
+    component: () => import('../views/Grammar.vue'),
     beforeEnter: authGuard
   },
   {
@@ -46,23 +46,23 @@ const routes = [
   {
     path: '/video',
     name: 'Video',
-    component: () => import(/* webpackChunkName: "video" */ '../views/Video.vue'),
+    component: () => import('../views/Video.vue'),
     beforeEnter: authGuard
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: () => import(/* webpackChunkName: "signup" */ '../views/Signup.vue')
+    component: () => import('../views/Signup.vue')
   },
   {
     path: '*',
     name: 'Page404',
-    component: () => import(/* webpackChunkName: "page404" */ '../components/errors/Page404.vue')
+    component: () => import('../components/errors/Page404.vue')
   }
 ]
 

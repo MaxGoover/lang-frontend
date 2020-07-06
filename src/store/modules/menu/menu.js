@@ -3,26 +3,23 @@
 export default {
   namespaced: true,
   state: {
-    showDialog: false,
-    showDrawer: false
+    showAppHeader: true,
+    showAppFooter: true,
+    showDialog: false
   },
   getters: {
     showDialog: state => state.showDialog
   },
   mutations: {
+    setShowAppHeader (state, payload) {
+      state.showAppHeader = payload
+    },
+    setShowAppFooter (state, payload) {
+      state.showAppFooter = payload
+    },
     setShowDialog (state, payload) {
       state.showDialog = payload
-    },
-    setShowDrawer (state) {
-      state.showDrawer = !state.showDrawer
     }
   },
-  actions: {
-    setShowDialog ({ commit }, payload) {
-      commit('setShowDialog', payload)
-    },
-    setShowDrawer ({ commit }) {
-      commit('setShowDrawer')
-    }
-  }
+  actions: {}
 }

@@ -9,7 +9,7 @@
 export default {
   name: 'Books',
   components: {
-    BooksList: () => import(/* webpackChunkName: "booksList" */ '../components/books/BooksList')
+    BooksList: () => import('../components/books/BooksList')
   }
 }
 </script>

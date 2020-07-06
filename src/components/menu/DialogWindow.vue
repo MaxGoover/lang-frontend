@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     hideDialog () {
-      this.$store.dispatch('menu/setShowDialog', false)
+      this.$store.commit('menu/setShowDialog', false)
     },
     logout () {
       this.$store.dispatch('authorization/logout')
