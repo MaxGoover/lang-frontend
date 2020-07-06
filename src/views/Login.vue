@@ -13,24 +13,23 @@
 </template>
 
 <script>
-import { i18n } from '../../i18n'
-import BreadCrumb from '../../entities/breadCrumb'
-
-const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
-const Sign = () => import('./components/Sign')
+import { i18n } from '../i18n'
+import BreadCrumb from '../entities/BreadCrumb'
 
 export default {
   name: 'Login',
   components: {
-    AppBreadCrumbs,
-    Sign
+    AppBreadCrumbs: () => import('../components/app/AppBreadCrumbs'),
+    Sign: () => import('../components/sign/Sign')
   },
-  data: () => ({
-    breadCrumbs: [
-      new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-      new BreadCrumb(i18n.t('pageSign.authorization'), { name: 'Login' })
-    ]
-  }),
+  data () {
+    return {
+      breadCrumbs: [
+        new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
+        new BreadCrumb(i18n.t('pageSign.authorization'), { name: 'Login' })
+      ]
+    }
+  },
   methods: {
     login (value) {
       this.$store.dispatch('authorization/login', value)

@@ -10,14 +10,14 @@ export default class BreadCrumb {
   }
 
   get text () {
-    return this.text
+    return this._text
   }
 
   get to () {
-    return this.to
+    return this._to
   }
 
   get disabled () {
-    return this.disabled
+    return this._disabled
   }
 }

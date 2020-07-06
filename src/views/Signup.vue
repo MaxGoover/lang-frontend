@@ -13,11 +13,11 @@
 </template>
 
 <script>
-import { i18n } from '../../i18n'
-import BreadCrumb from '../../entities/breadCrumb'
+import { i18n } from '../i18n'
+import BreadCrumb from '../entities/BreadCrumb'
 
-const AppBreadCrumbs = () => import('../../components/AppBreadCrumbs')
-const Sign = () => import('./components/Sign')
+const AppBreadCrumbs = () => import('../components/app/AppBreadCrumbs')
+const Sign = () => import('../components/sign/Sign')
 
 export default {
   name: 'Signup',
@@ -25,12 +25,14 @@ export default {
     AppBreadCrumbs,
     Sign
   },
-  data: () => ({
-    breadCrumbs: [
-      new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
-      new BreadCrumb(i18n.t('pageSign.registration'), { name: 'Signup' })
-    ]
-  }),
+  data () {
+    return {
+      breadCrumbs: [
+        new BreadCrumb(i18n.t('appHeader.main'), { name: 'Main' }),
+        new BreadCrumb(i18n.t('pageSign.registration'), { name: 'Signup' })
+      ]
+    }
+  },
   methods: {
     signUp (value) {
       this.$store.dispatch('authorization/signup', value)

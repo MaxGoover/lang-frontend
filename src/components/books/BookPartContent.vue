@@ -5,12 +5,6 @@
     <div class="display-1 text-center">{{ bookPart.bookTitle }}</div>
     <div class="headline">{{ bookPart.partTitle }}</div>
 
-    <!--Youtube-->
-    <div class="text-center mt-2 mb-2">
-      <!--Youtube плеер-->
-      <div class="headline" :width="width">Здесь плеер Youtube</div>
-    </div>
-
     <!--Вкладки с переводами-->
     <div class="mt-2">
       <v-slider
@@ -29,6 +23,8 @@
       >
         <v-tab key="en" ripple>Текст с подсказками</v-tab>
         <v-tab key="ru" ripple>Параллельно</v-tab>
+
+        <!--Текст с переводом-->
         <v-tab-item key="en">
           <div v-for="(p, i) in bookPart.content" :key="`p1${i}`">
             <span>&nbsp;&nbsp;</span>
@@ -54,11 +50,12 @@
             </span>
           </div>
         </v-tab-item>
+
+        <!--Слова с переводом-->
         <v-tab-item key="ru">
           <v-container>
             <v-layout row wrap v-for="(p, i) in bookPart.content" :key="`p2${i}`">
               <v-flex xs6>
-                <span>&nbsp;&nbsp;</span>
                 <span
                   v-for="(sentence, y) in p.sentences"
                   :key="`p2${i}s2${y}orig`"

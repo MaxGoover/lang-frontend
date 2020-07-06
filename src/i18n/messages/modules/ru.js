@@ -1,4 +1,7 @@
 export default {
+  app: {
+    name: 'Lang'
+  },
   appHeader: {
     grammar: 'Грамматика',
     learnWords: 'Учить слова',
@@ -9,9 +12,6 @@ export default {
     reading: 'Чтение',
     signup: 'Зарегистрироваться',
     video: 'Видео'
-  },
-  app: {
-    name: 'M-leef'
   },
   common: {
     no: 'Нет',
@@ -52,7 +52,3 @@ export default {
     username: 'Логин'
   }
 }
-// зеленая - создает
-// голубая - редактирует
-// желтая - предупреждать
-// красная - удалять (или ошибка)

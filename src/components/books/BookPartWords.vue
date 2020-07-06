@@ -38,9 +38,7 @@ import { mapState } from 'vuex'
 
 export default {
   name: 'BookPartWords',
-  computed: {
-    ...mapState('books', ['bookPart'])
-  }
+  computed: { ...mapState('books', ['bookPart']) }
 }
 </script>
 

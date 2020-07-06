@@ -1,10 +1,7 @@
 <template>
   <v-container grid-list-md>
     <v-layout row wrap>
-      <v-flex
-        offset-lg2
-        xs12 sm12 lg8
-      >
+      <v-flex offset-lg2 xs12 sm12 lg8>
         <v-container fluid>
           <v-layout row>
 
@@ -30,6 +27,7 @@
         </v-container>
       </v-flex>
 
+      <!--Список книг-->
       <v-flex
         v-for="book in filteredBooks"
         :key="book._id"
@@ -49,7 +47,7 @@ import { mapState } from 'vuex'
 export default {
   name: 'BooksList',
   components: {
-    BooksListItem: () => import(/* webpackChunkName: "booksListItem" */ './BooksListItem')
+    BooksListItem: () => import('./BooksListItem')
   },
   data () {
     return {

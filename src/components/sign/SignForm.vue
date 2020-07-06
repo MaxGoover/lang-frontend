@@ -56,7 +56,7 @@
 import { mapState } from 'vuex'
 import { maxLength, minLength, required } from 'vuelidate/lib/validators'
 import { validationMixin } from 'vuelidate'
-import Params from '../../../params'
+import Params from '../../params'
 
 export default {
   name: 'SignForm',
@@ -79,62 +79,35 @@ export default {
     }
   },
   props: { buttonConfirmTitle: { type: String } },
-  data: () => ({
-    errors: {},
-    password: '',
-    rememberMe: false,
-    username: ''
-  }),
+  data () {
+    return {
+      username: '',
+      password: '',
+      rememberMe: false,
+      errors: {}
+    }
+  },
   mixins: [validationMixin],
   validations: {
-    password: {
-      minLength: minLength(6),
-      maxLength: maxLength(24),
-      required
-    },
     username: {
       minLength: minLength(Params.usernameMinLength),
       maxLength: maxLength(Params.usernameMaxLength),
+      required
+    },
+    password: {
+      minLength: minLength(6),
+      maxLength: maxLength(24),
       required
     }
   },
   methods: {
     confirmForm () {
       this.$emit('confirmForm', {
-        password: this.password,
+        username: this.username,
         rememberMe: this.rememberMe,
-        username: this.username
+        password: this.password
       })
     }
-
-    /**
-     * Авторизация пользователя.
-     */
-    // login () {
-    //   this.$v.$touch()
-    //   if (this.$v.$invalid) return false
-    //
-    //   this.$store.dispatch('authorization/login', {
-    //     password: this.password,
-    //     rememberMe: this.rememberMe,
-    //     username: this.username
-    //   })
-    //     .then(async () => {
-    //       // Редирект после авторизации
-    //       await this.$router.push({ path: this.$route.query.redirect || '/' })
-    //       return true
-    //     })
-    //     .then(() => {
-    //       // Обновляет страницу после авторизации
-    //       window.location.reload()
-    //     })
-    //     .catch(error => {
-    //       // Установка ошибок валидации
-    //       if (error.isValidationError) {
-    //         this.errors = error.validationErrors
-    //       }
-    //     })
-    // }
   }
 }
 </script>

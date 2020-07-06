@@ -1,8 +1,5 @@
 <template>
-  <v-card
-    class="white--text"
-    color="info"
-  >
+  <v-card class="white--text" color="info">
     <v-container fluid>
       <v-layout row>
 
@@ -59,16 +56,12 @@ import BookHelper from '../../helpers/BookHelper'
 
 export default {
   name: 'BookDetails',
-  props: {
-    book: { type: Object }
-  },
+  props: { book: { type: Object } },
   computed: {
     ...mapState('authorization', ['isAuthorized']),
     ...mapState('general', ['loading'])
   },
-  methods: {
-    getBookLevels: BookHelper.getBookLevels
-  }
+  methods: { getBookLevels: BookHelper.getBookLevels }
 }
 </script>
 

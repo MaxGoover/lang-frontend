@@ -1,17 +1,9 @@
 <template>
   <div>
     <h1>Video</h1>
-    <input type="file" accept="image/*" multiple>
 
-    <form method="post" enctype="multipart/form-data" name="form">
-      <input type="file" name="media-vid"  class=" file_multi_video" accept="video/*">
-      <input type="submit" name="submit" value="upload"/>
-    </form>
-
-    <v-form
-      enctype="multipart/form-data"
-      @submit="uploadVideos"
-    >
+    <!--Загрузка видеофайлов-->
+    <v-form @submit.prevent="uploadVideos">
       <v-file-input
         v-model="videos"
         accept="video/*"
@@ -30,7 +22,6 @@
         block
         color="primary"
         type="submit"
-        @click.prevent="uploadVideos"
       >
         Подтвердить
       </v-btn>
@@ -42,14 +33,10 @@
 <script>
 export default {
   name: 'Video',
-  data () {
-    return {
-      videos: null
-    }
-  },
+  data () { return { videos: null } },
   methods: {
     uploadVideos () {
-      this.$store.dispatch('video/uploadFile', this.videos)
+      this.$store.dispatch('video/uploadFiles', this.videos)
     }
   }
 }

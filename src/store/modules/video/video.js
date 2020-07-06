@@ -1,4 +1,4 @@
-// import { axios } from '../../../axios'
+import { axios } from '../../../axios'
 import Params from '../../../params'
 
 export default {
@@ -10,7 +10,7 @@ export default {
     /**
      * Загрузка файлов на сервер.
      */
-    uploadFile ({ commit }, payload) {
+    uploadFiles ({ commit }, payload) {
       const formData = new FormData()
       let filesSize = 0
       let invalidFileSize = false
@@ -25,38 +25,13 @@ export default {
         return false
       }
 
-      // try {
-      //   const { data } = Axios.post('record/record/upload-audio', formData)
-      //   this.$emit('onLoading', false)
-      //
-      //   if (data.hasErrors) {
-      //     if (data.isValidationError) {
-      //       this.errors = data.validationError
-      //     } else {
-      //       data.errors.map(error => {
-      //         this.$notify({
-      //           group: 'main',
-      //           type: 'error',
-      //           title: this.$t('status.error'),
-      //           text: error.message
-      //         })
-      //       })
-      //     }
-      //     return Promise.reject(data)
-      //   } else {
-      //     this.$notify({
-      //       group: 'main',
-      //       type: 'success',
-      //       title: this.$t('status.success'),
-      //       text: this.$t('record.successUploadAudio')
-      //     })
-      //
-      //     return data
-      //   }
-      // } catch (e) {
-      //   this.$emit('onLoading', false)
-      //   return Promise.reject(e)
-      // }
+      this.dispatch('general/startLoading')
+      axios.post('grammar/video/convert', formData)
+        .then(
+          response => { console.log(1, response) },
+          reject => { console.log(2, reject.response) })
+        .catch(error => { console.log(3, error) })
+        .finally(() => { this.dispatch('general/stopLoading') })
     }
   }
 }

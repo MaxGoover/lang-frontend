@@ -8,7 +8,7 @@ const routes = [
   {
     path: '/',
     name: 'Main',
-    component: () => import(/* webpackChunkName: "main" */ '../components/main/Main.vue')
+    component: () => import(/* webpackChunkName: "main" */ '../views/Main.vue')
   },
   {
     path: '/books',
@@ -33,7 +33,14 @@ const routes = [
   {
     path: '/grammar',
     name: 'Grammar',
-    component: () => import(/* webpackChunkName: "grammar" */ '../components/grammar/Grammar.vue'),
+    component: () => import(/* webpackChunkName: "grammar" */ '../views/Grammar.vue'),
+    beforeEnter: authGuard
+  },
+  {
+    path: '/grammar/:alias',
+    name: 'GrammarTraining',
+    props: true,
+    component: () => import('../components/grammar/GrammarTraining.vue'),
     beforeEnter: authGuard
   },
   {
@@ -45,12 +52,12 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "login" */ '../views/sign/Login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
     path: '/signup',
     name: 'Signup',
-    component: () => import(/* webpackChunkName: "signup" */ '../views/sign/Signup.vue')
+    component: () => import(/* webpackChunkName: "signup" */ '../views/Signup.vue')
   },
   {
     path: '*',
