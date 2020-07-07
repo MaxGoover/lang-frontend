@@ -10,7 +10,11 @@ export default {
   getters: {},
   mutations: {
     setExercises (state, payload) {
-      state.exercises = payload
+      state.exercises = payload.map(exercise => {
+        exercise.checked = false
+        exercise.corrected = false
+        return exercise
+      })
     },
     setTraining (state, payload) {
       state.training = payload
