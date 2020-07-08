@@ -10,8 +10,11 @@ export default {
   getters: {},
   mutations: {
     checkExercise (state, payload) {
-      const exercise = state.exercises.find(exercise => exercise._id === payload)
+      const exercise = state.exercises.find(exercise => exercise._id === payload._id)
       exercise.checked = true
+      exercise.corrected = exercise.translations.filter(el =>
+        el.indexOf(payload.translate) > -1
+      ).length
     },
     setExercises (state, payload) {
       state.exercises = payload.map(exercise => {

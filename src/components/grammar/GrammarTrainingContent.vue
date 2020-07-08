@@ -19,7 +19,7 @@
       justify="center"
     >
       <v-flex xs12 sm10 md8>
-        <v-textarea
+        <v-text-field
           v-model="translate"
           autofocus
           class="display-1 mt-4 mdi-remove"
@@ -30,12 +30,13 @@
         <v-btn
           block
           class="mb-4"
+          :color="exercise.corrected ? 'green' : 'white'"
+          :light="!exercise.corrected"
           :disabled="$v.translate.$invalid"
-          light
           :elevation="4"
-          @click.prevent="checkExercise"
+          @click.prevent="exercise.checked ? nextExercise() : checkExercise()"
         >
-          Проверить
+          {{ exercise.checked ? 'Далее' : 'Проверить' }}
         </v-btn>
       </v-flex>
     </v-row>
@@ -78,7 +79,10 @@ export default {
   },
   methods: {
     checkExercise () {
-      this.$store.commit('training/checkExercise', this.exercise._id)
+      this.$store.commit('training/checkExercise', {
+        _id: this.exercise._id,
+        translate: this.translate
+      })
     },
     nextExercise () {},
     previousExercise () {},
