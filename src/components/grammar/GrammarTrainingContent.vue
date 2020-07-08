@@ -4,50 +4,105 @@
     fluid
     :style="'min-height: 450px !important;'"
   >
+    <!--Предложение-->
     <v-row
       class="display-1 pa-5 exercise"
       justify="center"
-      :style="'min-height: 90px !important;'"
     >
       <span>{{ exercise.sentence }}</span>
     </v-row>
+
+    <!--Поле ввода перевода-->
     <v-row
       align="center"
-      class="mt-9 mb-3 pr-1 pl-1"
+      class="mt-3 mb-3 pr-1 pl-1"
       justify="center"
     >
       <v-flex xs12 sm10 md8>
         <v-textarea
+          v-model="translate"
           autofocus
-          class="display-1 ma-5 mdi-remove"
+          class="display-1 mt-4 mdi-remove"
           clearable
-          filled
-          single-line
           outlined
           placeholder="Введите на английском"
         />
+        <v-btn
+          block
+          class="mb-4"
+          :disabled="$v.translate.$invalid"
+          light
+          :elevation="4"
+          @click.prevent="checkExercise"
+        >
+          Проверить
+        </v-btn>
       </v-flex>
     </v-row>
+
+    <!--Перевод-->
     <v-row
-      v-if="false"
+      v-if="exercise.checked"
       class="display-1 pa-5 exercise"
       justify="center"
-      :style="'min-height: 90px !important;'"
     >
+      <span>{{ exercise.translations[0] }}</span>
     </v-row>
   </v-container>
 </template>
 
 <script>
+import { minLength, required } from 'vuelidate/lib/validators'
+import { validationMixin } from 'vuelidate'
+
 export default {
   name: 'GrammarTrainingContent',
-  props: { exercise: { type: Object } }
+  mixins: [validationMixin],
+  props: { exercise: { type: Object } },
+  data () {
+    return {
+      translate: null
+    }
+  },
+  validations: {
+    translate: {
+      minLength: minLength(3),
+      required
+    }
+  },
+  created () {
+    document.addEventListener('keydown', this.onKeyDown)
+  },
+  beforeDestroy () {
+    document.removeEventListener('keydown', this.onKeyDown)
+  },
+  methods: {
+    checkExercise () {
+      this.$store.commit('training/checkExercise', this.exercise._id)
+    },
+    nextExercise () {},
+    previousExercise () {},
+    onKeyDown (e) {
+      switch (e.key) {
+        case 'ArrowLeft':
+          this.previousExercise()
+          break
+        case 'ArrowRight':
+          this.nextExercise()
+          break
+        case 'Enter':
+          this.checkExercise()
+          break
+      }
+    }
+  }
 }
 </script>
 
 <style scoped>
   .exercise {
-    border-top:    5px solid white;
     border-bottom: 5px solid white;
+    border-top: 5px solid white;
+    min-height: 90px;
   }
 </style>

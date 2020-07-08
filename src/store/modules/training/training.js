@@ -9,6 +9,10 @@ export default {
   },
   getters: {},
   mutations: {
+    checkExercise (state, payload) {
+      const exercise = state.exercises.find(exercise => exercise._id === payload)
+      exercise.checked = true
+    },
     setExercises (state, payload) {
       state.exercises = payload.map(exercise => {
         exercise.checked = false

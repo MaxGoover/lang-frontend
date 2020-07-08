@@ -16,7 +16,7 @@
         </v-carousel-item>
       </v-carousel>
     </v-row>
-    <grammar-training-footer />
+    <grammar-training-footer/>
   </v-card>
 </template>
 

@@ -60,6 +60,16 @@ import Params from '../../params'
 
 export default {
   name: 'SignForm',
+  mixins: [validationMixin],
+  props: { buttonConfirmTitle: { type: String } },
+  data () {
+    return {
+      username: '',
+      password: '',
+      rememberMe: false,
+      errors: {}
+    }
+  },
   computed: {
     ...mapState('authorization', ['isAuthorized']),
     ...mapState('general', ['loading']),
@@ -78,16 +88,6 @@ export default {
       return errors
     }
   },
-  props: { buttonConfirmTitle: { type: String } },
-  data () {
-    return {
-      username: '',
-      password: '',
-      rememberMe: false,
-      errors: {}
-    }
-  },
-  mixins: [validationMixin],
   validations: {
     username: {
       minLength: minLength(Params.usernameMinLength),
