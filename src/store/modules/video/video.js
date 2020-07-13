@@ -26,7 +26,7 @@ export default {
       }
 
       this.dispatch('general/startLoading')
-      axios.post('grammar/video/convert', formData)
+      axios.post('video/video/convert', formData)
         .then(
           response => { console.log(1, response) },
           reject => { console.log(2, reject.response) })
