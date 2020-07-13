@@ -19,11 +19,12 @@
       justify="center"
     >
       <v-flex xs12 sm10 md8>
-        <v-text-field
+        <v-textarea
           v-model="translate"
           autofocus
           class="display-1 mt-4 mdi-remove"
           clearable
+          filled
           outlined
           placeholder="Введите на английском"
         />

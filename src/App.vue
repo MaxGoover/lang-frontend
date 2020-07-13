@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <!--Хеадер-->
-    <app-header v-if="false"/>
+    <app-header v-if="showAppHeader"/>
 
     <!--Контент-->
     <v-content>
@@ -9,7 +9,7 @@
     </v-content>
 
     <!--Футер-->
-    <app-footer v-if="false"/>
+    <app-footer v-if="showAppFooter"/>
   </v-app>
 </template>
 

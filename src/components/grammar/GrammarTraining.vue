@@ -1,5 +1,5 @@
 <template>
-  <v-card color="blue-grey darken-4">
+  <v-card color="blue-grey darken-4 mr-0" height="100%" width="99%">
     <v-row>
       <grammar-training-toolbar :title="training.title"/>
       <v-carousel :show-arrows="false">
@@ -38,10 +38,13 @@ export default {
     ])
   },
   created () {
-    // background-color: green !important;
-    // this.$store.commit('menu/setShowAppHeader', false)
-    // this.$store.commit('menu/setShowAppFooter', false)
+    this.$store.commit('menu/setShowAppHeader', false)
+    this.$store.commit('menu/setShowAppFooter', false)
     this.$store.dispatch('training/getExercises', this.alias)
+  },
+  beforeDestroy () {
+    this.$store.commit('menu/setShowAppHeader', true)
+    this.$store.commit('menu/setShowAppFooter', true)
   }
 }
 </script>
