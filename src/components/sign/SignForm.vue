@@ -1,7 +1,5 @@
 <template>
-  <v-form
-    @submit="confirmForm"
-  >
+  <v-form @submit="confirmForm">
     <!--Логин-->
     <v-text-field
       v-model="username"
@@ -95,8 +93,8 @@ export default {
       required
     },
     password: {
-      minLength: minLength(6),
-      maxLength: maxLength(24),
+      minLength: minLength(Params.passwordMinLength),
+      maxLength: maxLength(Params.passwordMaxLength),
       required
     }
   },

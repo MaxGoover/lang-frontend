@@ -16,14 +16,11 @@
 import { i18n } from '../i18n'
 import BreadCrumb from '../entities/BreadCrumb'
 
-const AppBreadCrumbs = () => import('../components/app/AppBreadCrumbs')
-const Sign = () => import('../components/sign/Sign')
-
 export default {
   name: 'Signup',
   components: {
-    AppBreadCrumbs,
-    Sign
+    AppBreadCrumbs: () => import('../components/app/AppBreadCrumbs'),
+    Sign: () => import('../components/sign/Sign')
   },
   data () {
     return {
