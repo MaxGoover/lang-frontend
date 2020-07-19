@@ -26,10 +26,7 @@
 
     <!--Верхнее меню-->
     <v-card>
-      <v-toolbar
-        class="primary"
-        dark
-      >
+      <v-toolbar class="primary" dark>
         <v-app-bar-nav-icon
           class="hidden-sm-and-up"
           @click.stop="toggleDrawer = !toggleDrawer"
@@ -41,9 +38,7 @@
         <v-spacer/>
 
         <!--Кнопки меню-->
-        <v-toolbar-items
-          class="hidden-xs-only"
-        >
+        <v-toolbar-items class="hidden-xs-only">
           <v-btn
             v-for="item in menuItems"
             :key="item.title"
@@ -51,8 +46,7 @@
             :to="item.route"
             @click="item.event"
           >
-            <v-icon left v-html="item.icon"/>
-            {{ item.title }}
+            <v-icon left v-html="item.icon"/>{{ item.title }}
           </v-btn>
         </v-toolbar-items>
 
@@ -83,16 +77,16 @@ export default {
     ...mapState('general', ['loading']),
     menuItems () {
       return this.isAuthorized ? [
-        new MenuItem(
-          'mdi-eye',
-          this.$i18n.t('appHeader.reading'),
-          { name: 'Reading' }
-        ),
-        new MenuItem(
-          'mdi-eye',
-          this.$i18n.t('appHeader.video'),
-          { name: 'Video' }
-        ),
+        // new MenuItem(
+        //   'mdi-eye',
+        //   this.$i18n.t('appHeader.reading'),
+        //   { name: 'Reading' }
+        // ),
+        // new MenuItem(
+        //   'mdi-eye',
+        //   this.$i18n.t('appHeader.video'),
+        //   { name: 'Video' }
+        // ),
         new MenuItem(
           'mdi-account-edit',
           this.$i18n.t('appHeader.grammar'),
